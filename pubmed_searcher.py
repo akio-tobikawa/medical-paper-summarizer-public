@@ -71,7 +71,8 @@ class PubMedSearcher:
         tier1_journals = self.config.get("journals", {}).get("tier1", [])
         tier2_journals = self.config.get("journals", {}).get("tier2", [])
         tier3_journals = self.config.get("journals", {}).get("tier3", [])
-        all_journals = tier1_journals + tier2_journals + tier3_journals
+        # 重複を除去しつつ順序を保持（tier1優先）
+        all_journals = list(dict.fromkeys(tier1_journals + tier2_journals + tier3_journals))
 
         if all_journals:
             journal_terms = " OR ".join(
