@@ -21,64 +21,80 @@ PROMPT_TEMPLATE = """
 専門領域: {specialty}
 曜日テーマの希望: {daily_theme_preferences}
 
+★★★ 最重要ルール: キーワードの形式について ★★★
+このシステムでは、キーワードを PubMed の「[Title/Abstract]」フィールドで完全一致検索します。
+そのため、キーワードは「実際に論文のタイトルやアブストラクトに出現するフレーズ」でなければなりません。
+
+【禁止】MeSH見出し語やカテゴリ名をそのままキーワードにすること
+  NG例: "Cardiovascular diseases", "Arrhythmias", "Neoplasms", "Digestive System Diseases"
+  → これらはMeSHの階層見出し語であり、論文のTitle/Abstractにはほぼ出現しません
+
+【必須】論文中に実際に登場する具体的な疾患名・病態・治療法を使うこと
+  OK例: "heart failure", "atrial fibrillation", "myocardial infarction", "coronary artery disease"
+  OK例: "gastric cancer", "inflammatory bowel disease", "hepatocellular carcinoma"
+  → すべて小文字で記述すること（PubMedのTitle/Abstract検索は大文字小文字を区別しないが、統一のため）
+
 以下のJSON形式で出力してください。前置きや説明は不要です。JSONのみ出力してください。
 
 {{
   "specialties": {{
-    "primary": ["PubMedで使う主要キーワード（英語）を5〜7個"],
-    "secondary": ["関連キーワード（英語）を8〜12個"]
+    "primary": ["論文のTitle/Abstractに頻出する主要キーワード（英語・小文字）を5〜7個"],
+    "secondary": ["同様に論文中に出現する関連キーワード（英語・小文字）を8〜12個"]
   }},
   "journals": {{
-    "tier1": ["最高権威ジャーナル名（PubMed表記）を3〜5個"],
+    "tier1": ["最高権威ジャーナル名（PubMed ISOAbbreviation表記）を3〜5個"],
     "tier2": ["専門領域の主要ジャーナル名を3〜5個"],
     "tier3": ["その他の重要ジャーナル名を5〜8個"]
   }},
   "daily_themes": {{
     "Monday": {{
-      "specialties": ["月曜のサブテーマキーワード（英語）"],
-      "journals": ["関連専門誌名"]
+      "specialties": ["月曜のサブテーマ（論文Title/Abstractに出現する具体的フレーズ、小文字）を1〜3個"],
+      "journals": ["関連専門誌名を2〜3個"]
     }},
     "Tuesday": {{
-      "specialties": ["火曜のサブテーマキーワード（英語）"],
-      "journals": ["関連専門誌名"]
+      "specialties": ["火曜のサブテーマ（同上）を1〜3個"],
+      "journals": ["関連専門誌名を2〜3個"]
     }},
     "Wednesday": {{
-      "specialties": ["水曜のサブテーマキーワード（英語）"],
-      "journals": ["関連専門誌名"]
+      "specialties": ["水曜のサブテーマ（同上）を1〜3個"],
+      "journals": ["関連専門誌名を2〜3個"]
     }},
     "Thursday": {{
-      "specialties": ["木曜のサブテーマキーワード（英語）"],
-      "journals": ["関連専門誌名"]
+      "specialties": ["木曜のサブテーマ（同上）を1〜3個"],
+      "journals": ["関連専門誌名を2〜3個"]
     }},
     "Friday": {{
-      "specialties": ["金曜のサブテーマキーワード（英語）"],
-      "journals": ["関連専門誌名"]
+      "specialties": ["金曜のサブテーマ（同上）を1〜3個"],
+      "journals": ["関連専門誌名を2〜3個"]
     }},
     "Saturday": {{
-      "specialties": ["土曜のサブテーマキーワード（英語）"],
-      "journals": ["関連専門誌名"]
+      "specialties": ["土曜のサブテーマ（同上）を1〜3個"],
+      "journals": ["関連専門誌名を2〜3個"]
     }},
     "Sunday": {{
-      "specialties": ["日曜のサブテーマキーワード（英語）"],
-      "journals": ["関連専門誌名"]
+      "specialties": ["日曜のサブテーマ（同上）を1〜3個"],
+      "journals": ["関連専門誌名を2〜3個"]
     }}
   }},
   "clinical_relevance": {{
     "high_value": [
-      "この専門領域で特に重要な臨床アウトカムキーワード（英語）を8〜10個",
+      "この専門領域で特に重要な臨床アウトカムキーワード（英語・小文字）を8〜10個",
       "例: 循環器なら cardiovascular death / myocardial infarction、消化器なら gastrointestinal bleeding / hepatic decompensation など"
     ],
     "practical": [
-      "実臨床への応用性を示す専門領域特有のキーワード（英語）を5〜8個",
+      "実臨床への応用性を示す専門領域特有のキーワード（英語・小文字）を5〜8個",
       "例: standard of care / treatment algorithm / clinical decision-making など"
     ]
   }}
 }}
 
 重要なルール:
-- ジャーナル名は必ずPubMedに登録されている正式略称で記載すること
-- キーワードはPubMedのMeSH用語や検索で実際に使われる英語表現にすること
-- 曜日ごとに専門領域のサブテーマを分散させること（例: 心不全→不整脈→虚血性心疾患...）
+- ジャーナル名は必ずPubMedに登録されているISOAbbreviation（正式略称）で記載すること
+- キーワードは全て小文字の英語で、論文のタイトル・アブストラクトに実際に頻出するフレーズにすること
+- MeSHの見出し語形式（大文字始まりのカテゴリ名）は絶対に使わないこと
+- 複数形カテゴリ名（"diseases", "disorders"）ではなく、具体的な疾患名を使うこと
+- 曜日ごとに専門領域のサブテーマを分散させること（例: heart failure→atrial fibrillation→coronary artery disease...）
+- 曜日テーマのspecialtiesは1〜3個に絞ること（多すぎるとAND検索で結果が0件になる）
 - 「曜日テーマの希望」が入力されている場合は、その希望を優先して曜日テーマを設定すること。希望が空の場合はAIが自動で決める
 - clinical_relevance は「例:」部分を含めず、実際のキーワードのみリストに入れること
 - JSONのみ出力し、前置き・説明・マークダウンコードブロックは不要
