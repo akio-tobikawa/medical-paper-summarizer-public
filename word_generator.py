@@ -33,6 +33,7 @@ class WordGenerator:
             config: config.yamlから読み込んだ設定辞書
         """
         self.config = config
+        self.specialty_name = config.get("specialty_name", "医学")
         self.output_config = config.get("output", {})
 
     def generate(
@@ -112,7 +113,7 @@ class WordGenerator:
         subtitle = doc.add_paragraph()
         subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
         run = subtitle.add_run(
-            f"循環器内科 新着論文サマリー\n"
+            f"{self.specialty_name} 新着論文サマリー\n"
             f"作成日: {now.strftime('%Y年%m月%d日')}（{now.strftime('%A')}）"
         )
         run.font.size = Pt(12)
@@ -125,7 +126,7 @@ class WordGenerator:
         overview = doc.add_paragraph()
         overview.add_run(
             f"今週の注目論文トップ{len(papers)}を選出しました。\n"
-            f"冒頭にサマリーインデックスを掲載し、全10本を詳細に解説します。"
+            f"冒頭にサマリーインデックスを掲載し、全{len(papers)}本を詳細に解説します。"
         ).font.size = Pt(10)
 
     def _add_papers(self, doc: Document, papers: list[Paper]):
@@ -253,8 +254,6 @@ class WordGenerator:
         """
         太字（**text**）を含むテキストをWord段落に追加する
         """
-        import re
-
         # **text** パターンを分割
         parts = re.split(r'(\*\*.*?\*\*)', text)
 
@@ -410,8 +409,6 @@ class WordGenerator:
     def _extract_index_info(self, paper: Paper) -> dict:
         """AI要約からインデックス用情報を抽出する"""
         content = paper.summary.get("content", "")
-        import re
-        
         info = {
             "importance": "★★★☆☆",
             "conclusion": "要約参照",

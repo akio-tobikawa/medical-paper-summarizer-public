@@ -7,9 +7,14 @@ on:
   workflow_dispatch:
     # 手動実行用トリガー
 
+concurrency:
+  group: daily-summary
+  cancel-in-progress: false
+
 jobs:
   run-summary:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write
 
@@ -23,11 +28,32 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
+      - name: Validate required secrets
+        run: |
+          missing=""
+          [ -z "$GEMINI_API_KEY" ] && missing="$missing GEMINI_API_KEY"
+          [ -z "$NCBI_EMAIL" ] && missing="$missing NCBI_EMAIL"
+          [ -z "$NCBI_API_KEY" ] && missing="$missing NCBI_API_KEY"
+          [ -z "$GMAIL_USERNAME" ] && missing="$missing GMAIL_USERNAME"
+          [ -z "$GMAIL_APP_PASSWORD" ] && missing="$missing GMAIL_APP_PASSWORD"
+          [ -z "$GMAIL_RECIPIENT" ] && missing="$missing GMAIL_RECIPIENT"
+          if [ -n "$missing" ]; then
+            echo "エラー: 以下のSecretsが設定されていません:$missing"
+            echo "Settings → Secrets and variables → Actions から設定してください。"
+            exit 1
+          fi
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NCBI_EMAIL: ${{ secrets.NCBI_EMAIL }}
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+          GMAIL_USERNAME: ${{ secrets.GMAIL_USERNAME }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_RECIPIENT: ${{ secrets.GMAIL_RECIPIENT }}
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          playwright install chromium
 
       - name: Run summarizer
         env:
@@ -78,5 +104,5 @@ jobs:
           git config --local user.name "GitHub Action"
           git add history.json
           git commit -m "chore: Update paper history" || echo "No changes to commit"
-          git pull --rebase --autostash origin main
+          git pull --rebase --autostash origin ${{ github.ref_name }}
           git push

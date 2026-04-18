@@ -28,9 +28,9 @@ class AISummarizer:
             api_key: Gemini APIキー
         """
         self.config = config
+        self.specialty_name = config.get("specialty_name", "医師")
         self.ai_config = config.get("ai", {})
         self.model_chain = self.ai_config.get("model_chain", [
-            "gemini-3-flash-preview",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite-preview-09-2025",
             "gemini-2.0-flash"
@@ -221,8 +221,8 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
 
     def _build_detailed_prompt(self, paper_info: str) -> str:
         """詳細要約プロンプト"""
-        return f"""あなたは循環器内科の専門医であり、優秀な医師アシスタントです。
-以下の論文について、忙しい循環器内科医が短時間で本質をつかめる形式で、日本語で詳細な批判的要約を作成してください。
+        return f"""あなたは{self.specialty_name}の専門医であり、優秀な医師アシスタントです。
+以下の論文について、忙しい{self.specialty_name}が短時間で本質をつかめる形式で、日本語で詳細な批判的要約を作成してください。
 
 {paper_info}
 
@@ -284,8 +284,8 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
 
     def _build_brief_prompt(self, paper_info: str) -> str:
         """簡潔要約プロンプト"""
-        return f"""あなたは循環器内科の専門医であり、優秀な医師アシスタントです。
-以下の論文について、忙しい循環器内科医が短時間で把握できるよう、日本語で簡潔な批判的要約を作成してください。
+        return f"""あなたは{self.specialty_name}の専門医であり、優秀な医師アシスタントです。
+以下の論文について、忙しい{self.specialty_name}が短時間で把握できるよう、日本語で簡潔な批判的要約を作成してください。
 
 {paper_info}
 
@@ -325,8 +325,8 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
     def _build_synthesis_prompt(self, paper: Paper) -> str:
         """システマティックレビュー・メタアナリシス向けプロンプト"""
         paper_info = self._build_paper_info(paper)
-        return f"""あなたは循環器内科の専門医であり、優秀な医師アシスタントです。
-以下のシステマティックレビュー/メタアナリシスについて、忙しい循環器内科医が短時間でエビデンスの質と臨床的意義を把握できるよう、日本語で詳細な批判的要約を作成してください。
+        return f"""あなたは{self.specialty_name}の専門医であり、優秀な医師アシスタントです。
+以下のシステマティックレビュー/メタアナリシスについて、忙しい{self.specialty_name}が短時間でエビデンスの質と臨床的意義を把握できるよう、日本語で詳細な批判的要約を作成してください。
 
 {paper_info}
 
@@ -381,8 +381,8 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
     def _build_review_prompt(self, paper: Paper) -> str:
         """ナラティブレビュー向けプロンプト"""
         paper_info = self._build_paper_info(paper)
-        return f"""あなたは循環器内科の専門医であり、優秀な医師アシスタントです。
-以下のレビュー論文について、忙しい循環器内科医が短時間で全体像を把握できるよう、日本語で要約を作成してください。
+        return f"""あなたは{self.specialty_name}の専門医であり、優秀な医師アシスタントです。
+以下のレビュー論文について、忙しい{self.specialty_name}が短時間で全体像を把握できるよう、日本語で要約を作成してください。
 
 {paper_info}
 
@@ -427,8 +427,8 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
     def _build_guideline_prompt(self, paper: Paper) -> str:
         """ガイドライン向けプロンプト"""
         paper_info = self._build_paper_info(paper)
-        return f"""あなたは循環器内科の専門医であり、優秀な医師アシスタントです。
-以下のガイドラインについて、忙しい循環器内科医が短時間で要点を把握できるよう、日本語で要約を作成してください。
+        return f"""あなたは{self.specialty_name}の専門医であり、優秀な医師アシスタントです。
+以下のガイドラインについて、忙しい{self.specialty_name}が短時間で要点を把握できるよう、日本語で要約を作成してください。
 
 {paper_info}
 
@@ -489,7 +489,7 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
         if paper.journal in journals.get("tier1", []):
             reasons.append(f"トップジャーナル（{paper.journal}）掲載")
         elif paper.journal in journals.get("tier2", []):
-            reasons.append(f"主要循環器専門誌（{paper.journal}）掲載")
+            reasons.append(f"主要専門誌（{paper.journal}）掲載")
 
         # 論文タイプ
         high_types = [

@@ -188,18 +188,34 @@ def generate_specialty_config(specialty: str, api_key: str) -> dict:
     )
     text = response.text.strip()
 
-    # コードブロックを除去
-    text = re.sub(r"```(?:json)?\s*", "", text)
-    text = re.sub(r"```\s*$", "", text)
-
-    generated = json.loads(text)
+    # JSONオブジェクトを抽出（前置き文やコードブロックを無視）
+    match = re.search(r'\{.*\}', text, re.DOTALL)
+    if not match:
+        raise ValueError(f"AIの出力にJSONオブジェクトが見つかりませんでした:\n{text[:500]}")
+    generated = json.loads(match.group())
     return generated
+
+
+def validate_generated(generated: dict, specialty: str):
+    """生成された設定の必須フィールドを検証する"""
+    required_keys = ["specialties", "journals", "daily_themes"]
+    missing = [k for k in required_keys if k not in generated]
+    if missing:
+        raise ValueError(f"AIの出力に必須フィールドが不足しています: {missing}")
+    primary = generated.get("specialties", {}).get("primary", [])
+    if not primary:
+        raise ValueError("specialties.primary が空です。AIの出力を確認してください。")
+    tier1 = generated.get("journals", {}).get("tier1", [])
+    if not tier1:
+        raise ValueError("journals.tier1 が空です。AIの出力を確認してください。")
+    print(f"バリデーション OK — primary: {len(primary)}語、tier1: {len(tier1)}誌")
 
 
 def build_config(specialty: str, generated: dict, include_basic_science: bool) -> dict:
     """ベース設定と生成設定をマージしてconfig全体を組み立てる"""
     import copy
     config = copy.deepcopy(BASE_CONFIG)
+    config["specialty_name"] = specialty
     config["specialties"] = generated.get("specialties", {})
     config["journals"] = generated.get("journals", {})
     config["daily_themes"] = generated.get("daily_themes", {})
@@ -235,7 +251,15 @@ def main():
 
     try:
         generated = generate_specialty_config(specialty, api_key)
+        validate_generated(generated, specialty)
         config = build_config(specialty, generated, include_basic_science)
+
+        # 既存 config.yaml をバックアップ
+        import shutil
+        from pathlib import Path
+        if Path("config.yaml").exists():
+            shutil.copy("config.yaml", "config.yaml.bak")
+            print("既存の config.yaml を config.yaml.bak にバックアップしました")
 
         with open("config.yaml", "w", encoding="utf-8") as f:
             yaml.dump(config, f, allow_unicode=True,
@@ -251,8 +275,8 @@ def main():
         print("次のステップ: GitHub Actionsの「Daily Paper Summary」が")
         print("毎朝自動で論文を収集・要約してメールに届けます。")
 
-    except json.JSONDecodeError as e:
-        print(f"エラー: AIの出力をパースできませんでした: {e}")
+    except (json.JSONDecodeError, ValueError) as e:
+        print(f"エラー: AIの出力を処理できませんでした: {e}")
         sys.exit(1)
     except Exception as e:
         print(f"エラー: {e}")

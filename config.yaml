@@ -13,6 +13,10 @@ search:
   # Top論文の詳細要約数
   detailed_top_n: 10
 
+# --- 専門領域名（表示・プロンプトに使用） ---
+# Setupワークフローで自動設定されます
+specialty_name: "循環器内科"
+
 # --- 専門領域 ---
 specialties:
   # 最優先領域
@@ -89,7 +93,6 @@ exclude_types:
 ai:
   # Gemini モデル フォールバックチェーン（順に試行）
   model_chain:
-    - "gemini-3-flash-preview"
     - "gemini-2.5-flash"
     - "gemini-2.5-flash-lite-preview-09-2025"
     - "gemini-2.0-flash"
