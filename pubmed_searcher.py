@@ -51,11 +51,15 @@ class PubMedSearcher:
         self.config = config
         Entrez.email = email
         # NCBI APIキーのバリデーション（無効なキーはセットしない）
+        self._has_api_key = False
         if api_key and len(api_key) > 10 and api_key != "none":
             Entrez.api_key = api_key
+            self._has_api_key = True
             self.rate_limit = 0.1  # 10リクエスト/秒
+            logger.info("NCBI APIキーを設定しました")
         else:
             self.rate_limit = 0.34  # 3リクエスト/秒
+            logger.info("NCBI APIキーなしで動作します（レート制限: 3リクエスト/秒）")
 
     def _build_query(self, days_back: int) -> str:
         """
@@ -105,6 +109,104 @@ class PubMedSearcher:
         logger.info(f"検索クエリ: {query[:200]}...")
         return query
 
+    def _execute_esearch(
+        self, query: str, max_results: int,
+        min_date: str, max_date: str
+    ) -> Optional[dict]:
+        """
+        PubMed ESearchを実行する（フォールバック付き）
+
+        HTTP 400等のエラー発生時に以下の順でリトライする:
+        1. APIキーを除外して再試行
+        2. クエリをジャーナルフィルタのみに簡略化して再試行
+
+        Returns:
+            検索結果dict（全て失敗時はNone）
+        """
+        import urllib.error
+
+        # 試行1: 通常の検索
+        result = self._try_esearch(query, max_results, min_date, max_date)
+        if result is not None:
+            return result
+
+        # 試行2: APIキーが原因の可能性 → APIキーを一時的に無効化してリトライ
+        if self._has_api_key:
+            logger.warning("APIキーを無効化してリトライします...")
+            saved_key = Entrez.api_key
+            Entrez.api_key = None
+            self.rate_limit = 0.34
+
+            result = self._try_esearch(query, max_results, min_date, max_date)
+
+            # APIキーを復元
+            Entrez.api_key = saved_key
+            self.rate_limit = 0.1
+
+            if result is not None:
+                logger.warning(
+                    "APIキーなしで検索成功しました。"
+                    "NCBI_API_KEYの値が不正な可能性があります。"
+                    "Settings → Secrets で確認してください。"
+                )
+                return result
+
+        # 試行3: クエリが原因の可能性 → ジャーナルフィルタのみに簡略化
+        logger.warning("クエリを簡略化してリトライします...")
+        tier1_journals = self.config.get("journals", {}).get("tier1", [])
+        if tier1_journals:
+            simple_terms = " OR ".join(
+                [f'"{j}"[Journal]' for j in tier1_journals[:5]]
+            )
+            simple_query = f"({simple_terms})"
+            logger.info(f"簡略化クエリ: {simple_query[:200]}")
+
+            if self._has_api_key:
+                saved_key = Entrez.api_key
+                Entrez.api_key = None
+            result = self._try_esearch(
+                simple_query, max_results, min_date, max_date
+            )
+            if self._has_api_key:
+                Entrez.api_key = saved_key
+
+            if result is not None:
+                logger.warning("簡略化クエリで検索成功しました")
+                return result
+
+        logger.error("全ての検索試行が失敗しました")
+        return None
+
+    def _try_esearch(
+        self, query: str, max_results: int,
+        min_date: str, max_date: str
+    ) -> Optional[dict]:
+        """esearchを1回試行する"""
+        try:
+            time.sleep(self.rate_limit)
+            handle = Entrez.esearch(
+                db="pubmed",
+                term=query,
+                retmax=max_results,
+                sort="relevance",
+                usehistory="y",
+                datetype="pdat",
+                mindate=min_date,
+                maxdate=max_date
+            )
+            search_results = Entrez.read(handle, validate=False)
+            handle.close()
+            return search_results
+        except Exception as e:
+            logger.error(f"PubMed検索中にエラー: {e}")
+            logger.error(f"送信したクエリ: {query}")
+            if self._has_api_key:
+                logger.error(
+                    f"APIキー設定: あり "
+                    f"(末尾: ...{str(Entrez.api_key)[-4:] if Entrez.api_key else 'None'})"
+                )
+            return None
+
     def search(self, days_back: Optional[int] = None) -> list[Paper]:
         """
         PubMedを検索し、論文リストを返す
@@ -129,20 +231,12 @@ class PubMedSearcher:
 
         logger.info(f"PubMed検索を実行中（過去{days_back}日間）...")
         logger.info(f"日付範囲: {min_date_str} - {max_date_str}")
-        try:
-            handle = Entrez.esearch(
-                db="pubmed",
-                term=query,
-                retmax=max_results,
-                datetype="pdat",
-                mindate=min_date_str,
-                maxdate=max_date_str
-            )
-            search_results = Entrez.read(handle, validate=False)
-            handle.close()
-        except Exception as e:
-            logger.error(f"PubMed検索中にエラー: {e}")
-            logger.error(f"送信したクエリ: {query}")
+        logger.info(f"検索クエリ全文: {query}")
+
+        search_results = self._execute_esearch(
+            query, max_results, min_date_str, max_date_str
+        )
+        if search_results is None:
             return []
 
         id_list = search_results.get("IdList", [])
