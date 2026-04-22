@@ -1,15 +1,16 @@
 """
-AI要約モジュール
+AI要約モジュール（Claude API版）
 
-Google Gemini APIを使用して、各論文の批判的要約を
+Anthropic Claude APIを使用して、各論文の批判的要約を
 日本語で生成する。モデルフォールバックチェーン対応。
+感染症科・AMS専用プロンプト実装済み。
 """
 
 import time
 import logging
 from typing import Optional
 
-import google.generativeai as genai
+import anthropic
 
 from pubmed_searcher import Paper
 
@@ -17,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 
 class AISummarizer:
-    """AI論文要約クラス"""
+    """AI論文要約クラス（Claude API）"""
 
     def __init__(self, config: dict, api_key: str):
         """
@@ -25,31 +26,21 @@ class AISummarizer:
 
         Args:
             config: config.yamlから読み込んだ設定辞書
-            api_key: Gemini APIキー
+            api_key: Anthropic APIキー（ANTHROPIC_API_KEY）
         """
         self.config = config
-        self.specialty_name = config.get("specialty_name", "医師")
+        self.specialty_name = config.get("specialty_name", "感染症科・AMS")
         self.ai_config = config.get("ai", {})
         self.model_chain = self.ai_config.get("model_chain", [
-            "gemini-2.5-flash",
-            "gemini-2.5-flash-lite-preview-09-2025",
-            "gemini-2.0-flash"
+            "claude-opus-4-6",
+            "claude-sonnet-4-6",
+            "claude-haiku-4-5-20251001"
         ])
         self.max_retries = self.ai_config.get("max_retries", 3)
         self.retry_delay = self.ai_config.get("retry_delay", 5)
         self.timeout = self.ai_config.get("timeout", 120)
 
-        genai.configure(api_key=api_key)
-
-    def _create_model(self, model_name: str):
-        """指定モデルのインスタンスを作成する"""
-        return genai.GenerativeModel(
-            model_name=model_name,
-            generation_config=genai.GenerationConfig(
-                temperature=0.3,  # 正確性重視で低めの温度
-                max_output_tokens=4096,
-            )
-        )
+        self.client = anthropic.Anthropic(api_key=api_key)
 
     def _call_with_fallback(self, prompt: str) -> Optional[str]:
         """
@@ -70,34 +61,64 @@ class AISummarizer:
                         f"モデル {model_name} を使用中"
                         f"（試行 {attempt + 1}/{self.max_retries}）"
                     )
-                    model = self._create_model(model_name)
-                    # タイムアウトを設定して呼び出し
-                    response = model.generate_content(
-                        prompt, 
-                        request_options={"timeout": self.timeout}
+                    message = self.client.messages.create(
+                        model=model_name,
+                        max_tokens=4096,
+                        temperature=0.3,
+                        messages=[
+                            {"role": "user", "content": prompt}
+                        ]
                     )
 
-                    if response.text:
-                        logger.info(f"[OK] {model_name} で生成成功")
-                        return response.text
+                    if message.content and len(message.content) > 0:
+                        text = message.content[0].text
+                        if text:
+                            logger.info(f"[OK] {model_name} で生成成功")
+                            return text
 
-                except Exception as e:
-                    error_msg = str(e).lower()
+                except anthropic.RateLimitError as e:
                     logger.warning(
-                        f"モデル {model_name} でエラー "
+                        f"モデル {model_name} でレート制限"
                         f"（試行 {attempt + 1}）: {e}"
                     )
+                    logger.info("→ 次のモデルに早めにフォールバックします")
+                    break
 
-                    # レート制限やモデル未対応の場合は次のモデルへ
-                    if any(kw in error_msg for kw in [
-                        "rate limit", "quota", "429",
-                        "not found", "404", "not supported",
-                        "504", "deadline", "timeout"
-                    ]):
-                        logger.info(f"→ 次のモデルに早めにフォールバックします")
+                except anthropic.APIStatusError as e:
+                    error_msg = str(e).lower()
+                    logger.warning(
+                        f"モデル {model_name} でAPIエラー"
+                        f"（試行 {attempt + 1}）: {e}"
+                    )
+                    # モデル未対応・404はすぐ次へ
+                    if e.status_code in (404, 400):
+                        logger.info("→ 次のモデルに早めにフォールバックします")
                         break
+                    # 504/タイムアウトは次へ
+                    if e.status_code in (504, 529):
+                        logger.info("→ 過負荷のため次のモデルへフォールバックします")
+                        break
+                    # その他はリトライ
+                    if attempt < self.max_retries - 1:
+                        wait = self.retry_delay * (attempt + 1)
+                        logger.info(f"  {wait}秒後にリトライ...")
+                        time.sleep(wait)
 
-                    # その他のエラーはリトライ
+                except anthropic.APIConnectionError as e:
+                    logger.warning(
+                        f"モデル {model_name} で接続エラー"
+                        f"（試行 {attempt + 1}）: {e}"
+                    )
+                    if attempt < self.max_retries - 1:
+                        wait = self.retry_delay * (attempt + 1)
+                        logger.info(f"  {wait}秒後にリトライ...")
+                        time.sleep(wait)
+
+                except Exception as e:
+                    logger.warning(
+                        f"モデル {model_name} で予期しないエラー"
+                        f"（試行 {attempt + 1}）: {e}"
+                    )
                     if attempt < self.max_retries - 1:
                         wait = self.retry_delay * (attempt + 1)
                         logger.info(f"  {wait}秒後にリトライ...")
@@ -153,7 +174,7 @@ class AISummarizer:
                     "content": "⚠ 要約の生成に失敗しました。"
                 }
 
-            # API呼び出し間隔を空ける
+            # API呼び出し間隔
             if i < total - 1:
                 time.sleep(2)
 
@@ -220,98 +241,98 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
                 return self._build_brief_prompt(paper_info)
 
     def _build_detailed_prompt(self, paper_info: str) -> str:
-        """詳細要約プロンプト"""
-        return f"""あなたは{self.specialty_name}の専門医であり、優秀な医師アシスタントです。
-以下の論文について、忙しい{self.specialty_name}が短時間で本質をつかめる形式で、日本語で詳細な批判的要約を作成してください。
+        """詳細要約プロンプト（AMS/感染症専門医向け）"""
+        return f"""あなたは感染症専門医・抗菌薬適正使用支援（AMS）薬剤師として最高水準の批判的論文評価能力を持ちます。
+以下の論文について、忙しい{self.specialty_name}の専門家が短時間で本質をつかめる形式で、日本語で詳細な批判的要約を作成してください。
 
 {paper_info}
 
 以下の形式で出力してください。各セクションは明確に分けてください。
-※「承知いたしました」「要約します」等といった前置きや挨拶は一切含めず、いきなり「## サマリーインデックス情報」から出力してください。
+※「承知いたしました」「要約します」等の前置き・挨拶は一切含めず、いきなり「## サマリーインデックス情報」から出力してください。
 
 ## サマリーインデックス情報
-冒頭にインデックスを作成するため、以下の3点を極めて簡潔に出力してください。
 - **重要度**: [重要度の基準]に従い、★を5つ並べて表記（例：★★★★★）
 - **結論**: [40文字以内]で、この論文が何を示したか
-- **実用**: [50文字以内]で、明日の臨床にどう活きるか。疾患名、薬剤名、具体的な数値などの重要キーワードは必ず**太字**にすること
+- **実用**: [50文字以内]で、明日のAMS/感染症診療にどう活きるか。菌種名、抗菌薬名、具体的な数値などの重要キーワードは必ず**太字**にすること
 
 ## まず一言で
 この論文が何を示したのかを1〜2文で日本語要約してください。
 
 ## 研究の概要
-- **研究背景**: なぜこの研究が行われたか
-- **研究デザイン**: どのような研究手法か（RCT、コホート等）
-- **対象患者**: どのような患者が対象か（人数・特徴）
-- **介入/比較**: 何を比較したか
-- **主要評価項目**: 何を評価したか
-- **主な結果**: 主要な数値結果（ハザード比、95%CI等を含む）
+- **研究背景**: なぜこの研究が行われたか（どの臨床課題を解決しようとしたか）
+- **研究デザイン**: どのような研究手法か（RCT、前向きコホート、後ろ向き多施設研究等）
+- **対象患者**: どのような患者が対象か（人数・感染症の種類・重症度・施設背景）
+- **介入/比較**: 何を比較したか（抗菌薬レジメン、投与期間、AMS介入の有無等）
+- **主要評価項目**: 何を評価したか（臨床的治癒、30日死亡率、再発率等）
+- **主な結果**: 主要な数値結果（ハザード比、95%CI、NNT、p値等を含む）
 
-## 臨床的に重要なポイント
-- 専門医の視点で何が重要か
-- どの患者で役立つか
-- 実臨床を変える可能性があるか
-- 現場でどう使うか
+## AMS・感染症臨床的ポイント
+- 抗菌薬適正使用の観点で何が重要か
+- どの菌種・どの感染症でどのレジメンが支持されるか
+- de-escalation・IV→PO切り替え・投与期間短縮の根拠になるか
+- 耐性菌対策・カルバペネムスペアリングへの示唆
+- 院内感染対策（IPC）への影響はあるか
+- PK/PD的な考察（AUC/MIC、T>MIC等）が重要な場合は記載
 
 ## 限界
-- バイアスの可能性
-- 一般化可能性の限界
-- サンプルサイズの問題
-- 観察研究であることの限界（該当する場合）
-- 対象患者の偏り
-- 実装上の課題
+- バイアスの可能性（選択バイアス、交絡因子等）
+- 一般化可能性の限界（市中病院 vs 大学病院、耐性菌状況の地域差）
+- 日本の感染症状況・抗菌薬耐性パターンへの適用可能性
+- サンプルサイズ・検出力の問題
+- 観察研究の場合は因果推定の限界
 
-## 日本の臨床への実践メモ
-- 明日からの診療で意識すべきこと
-- カンファレンスで紹介するなら何を強調するか
-- 患者説明やチーム共有にどう活かせるか
-- 日本の医療環境での適用可能性
+## 日本の実臨床・AMS活動への実践メモ
+- 明日からのAMSラウンド・カルテレビューで使える根拠
+- 薬剤部・感染症科カンファレンスで紹介するなら何を強調するか
+- 院内ガイドライン・プロトコール改訂への示唆
+- 日本の保険・薬事環境での注意点（未承認薬・適応外使用等）
+- 患者説明・多職種チームへの共有ポイント
 
 重要度の基準：
-★★★★★：明日の診療方針に直結する、必ず読むべきパラダイムシフト
-★★★★☆：実用性が高く、知っておくべき重要な知見
-★★★☆☆：特定の条件下で役立つ、または興味深い知見
-★★☆☆☆：参考程度
+★★★★★：明日のAMS介入・診療方針に直結するパラダイムシフト
+★★★★☆：実用性が高く、院内プロトコール改訂を検討すべき重要な知見
+★★★☆☆：特定の感染症・菌種で役立つ、または今後の研究の方向性を示す
+★★☆☆☆：参考程度（方法論的限界が大きい等）
 ★☆☆☆☆：現在の業務への直接的な影響は少ない
 
 重要な注意事項:
 - 不確かなことは断定しないでください
-- 抄録の内容をなぞるだけでなく、批判的吟味を加えてください
 - 根拠が弱い場合は弱いと明確に述べてください
 - 誇張表現は避けてください
 - 統計の細かい説明よりも臨床的解釈を優先してください
 - ただし結果の信頼性に関わる統計上の注意点は簡潔に述べてください
+- 抄録の内容をなぞるだけでなく、批判的吟味を加えてください
 """
 
     def _build_brief_prompt(self, paper_info: str) -> str:
-        """簡潔要約プロンプト"""
-        return f"""あなたは{self.specialty_name}の専門医であり、優秀な医師アシスタントです。
-以下の論文について、忙しい{self.specialty_name}が短時間で把握できるよう、日本語で簡潔な批判的要約を作成してください。
+        """簡潔要約プロンプト（AMS向け）"""
+        return f"""あなたは感染症専門医・AMS薬剤師として最高水準の批判的論文評価能力を持ちます。
+以下の論文について、忙しい{self.specialty_name}の専門家が短時間で把握できるよう、日本語で簡潔な批判的要約を作成してください。
 
 {paper_info}
 
 以下の形式で出力してください。
-※「承知いたしました」「要約します」等といった前置きや挨拶は一切含めず、いきなり「## サマリーインデックス情報」から出力してください。
+※「承知いたしました」等の前置きは一切含めず、いきなり「## サマリーインデックス情報」から出力してください。
 
 ## サマリーインデックス情報
-冒頭にインデックスを作成するため、以下の3点を極めて簡潔に出力してください。
 - **重要度**: [重要度の基準]に従い、★を5つ並べて表記（例：★★★★★）
 - **結論**: [40文字以内]で、この論文が何を示したか
-- **実用**: [50文字以内]で、明日の臨床にどう活きるか。疾患名、薬剤名、具体的な数値などの重要キーワードは必ず**太字**にすること
+- **実用**: [50文字以内]で、明日のAMS/感染症診療にどう活きるか。菌種名、抗菌薬名、数値等の重要キーワードは**太字**にすること
 
 ## まず一言で
 この論文が何を示したのかを1〜2文で日本語要約。
 
 ## 要点
-- 研究デザインと対象（1-2行）
+- 研究デザインと対象（感染症の種類、菌種、重症度を含む、1-2行）
 - 主な結果（数値を含む、2-3行）
-- 臨床的意義（1-2行）
+- AMS・感染症臨床的意義（1-2行）
 - 主な限界（1-2行）
-- 明日からの診療への示唆（1-2行）
+- 明日からのAMS活動・診療への示唆（1-2行）
 
 重要度の基準：
-★★★★★：明日の診療方針に直結する、必ず読むべきパラダイムシフト
-★★★★☆：実用性が高く、知っておくべき重要な知見
-★★★☆☆：特定の条件下で役立つ、または興味深い知見
+★★★★★：明日のAMS介入・診療方針に直結するパラダイムシフト
+★★★★☆：実用性が高く、院内プロトコール改訂を検討すべき重要な知見
+★★★☆☆：特定の感染症・菌種で役立つ
 ★★☆☆☆：参考程度
 ★☆☆☆☆：現在の業務への直接的な影響は少ない
 
@@ -321,12 +342,11 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
 - 誇張表現は避ける
 """
 
-
     def _build_synthesis_prompt(self, paper: Paper) -> str:
-        """システマティックレビュー・メタアナリシス向けプロンプト"""
+        """システマティックレビュー・メタアナリシス向けプロンプト（AMS特化）"""
         paper_info = self._build_paper_info(paper)
-        return f"""あなたは{self.specialty_name}の専門医であり、優秀な医師アシスタントです。
-以下のシステマティックレビュー/メタアナリシスについて、忙しい{self.specialty_name}が短時間でエビデンスの質と臨床的意義を把握できるよう、日本語で詳細な批判的要約を作成してください。
+        return f"""あなたは感染症専門医・AMS薬剤師として最高水準の批判的論文評価能力を持ちます。
+以下のシステマティックレビュー/メタアナリシスについて、忙しい{self.specialty_name}の専門家がエビデンスの質と臨床的意義を短時間で把握できるよう、日本語で詳細な批判的要約を作成してください。
 
 {paper_info}
 
@@ -336,39 +356,39 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
 ## サマリーインデックス情報
 - **重要度**: ★5段階で表記（例：★★★★☆）
 - **結論**: [40文字以内]で、このレビューが示したこと
-- **実用**: [50文字以内]で、明日の臨床にどう活きるか。重要キーワードは**太字**にすること
+- **実用**: [50文字以内]で、明日のAMS/感染症診療にどう活きるか。重要キーワードは**太字**にすること
 
 ## まず一言で
 このレビュー/メタアナリシスが示したことを1〜2文で要約してください。
 
 ## レビューの概要
-- **リサーチクエスチョン**: 何を明らかにしようとしたか（PICO形式が望ましい）
+- **リサーチクエスチョン**: 何を明らかにしようとしたか（PICO形式：感染症の種類、菌種、介入、対照、アウトカム）
 - **採用文献**: 何本の研究を統合したか（対象期間・研究デザイン）
 - **採用基準**: どのような研究が含まれたか
 
 ## 主な結果
 - プールされた統計（ハザード比・オッズ比・RR・95%CI・NNT/NNHなど数値を明記）
-- サブグループ解析で重要な結果があれば記載
+- サブグループ解析で重要な結果があれば記載（菌種別・投与期間別・重症度別等）
 
 ## エビデンスの質
-- **GRADE評価**: あれば記載（なければ"記載なし"）
+- **GRADE評価**: あれば記載（なければ「記載なし」）
 - **異質性**: I²値・τ²など。臨床的に許容範囲か
 - **出版バイアス**: ファネルプロット等の評価があれば
 
 ## 限界
 - 含まれる研究自体の質の問題
-- 異質性・一般化可能性の限界
-- 日本人データの有無
+- 異質性・一般化可能性の限界（耐性菌パターンの地域差等）
+- 日本人データの有無・日本の感染症疫学への適用可能性
 
-## 日本の臨床への実践メモ
-- 明日からの診療で意識すべきこと
-- 現行ガイドラインとの整合性
-- 日本の医療環境での適用可能性
+## 日本のAMS・実臨床への実践メモ
+- 院内プロトコール・ガイドライン改訂への示唆
+- AMSラウンドで根拠として使えるか
+- 現行日本ガイドラインとの整合性
 
 重要度の基準：
-★★★★★：明日の診療方針に直結する、必ず読むべきパラダイムシフト
-★★★★☆：実用性が高く、知っておくべき重要な知見
-★★★☆☆：特定の条件下で役立つ、または興味深い知見
+★★★★★：明日のAMS介入・診療方針に直結するパラダイムシフト
+★★★★☆：院内プロトコール改訂を検討すべき重要な知見
+★★★☆☆：特定の感染症・菌種で役立つ
 ★★☆☆☆：参考程度
 ★☆☆☆☆：現在の業務への直接的な影響は少ない
 
@@ -379,10 +399,10 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
 """
 
     def _build_review_prompt(self, paper: Paper) -> str:
-        """ナラティブレビュー向けプロンプト"""
+        """ナラティブレビュー向けプロンプト（AMS特化）"""
         paper_info = self._build_paper_info(paper)
-        return f"""あなたは{self.specialty_name}の専門医であり、優秀な医師アシスタントです。
-以下のレビュー論文について、忙しい{self.specialty_name}が短時間で全体像を把握できるよう、日本語で要約を作成してください。
+        return f"""あなたは感染症専門医・AMS薬剤師として最高水準の批判的論文評価能力を持ちます。
+以下のレビュー論文について、忙しい{self.specialty_name}の専門家が短時間で全体像を把握できるよう、日本語で要約を作成してください。
 
 {paper_info}
 
@@ -392,30 +412,30 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
 ## サマリーインデックス情報
 - **重要度**: ★5段階で表記（例：★★★★☆）
 - **結論**: [40文字以内]で、このレビューが示したこと
-- **実用**: [50文字以内]で、明日の臨床にどう活きるか。重要キーワードは**太字**にすること
+- **実用**: [50文字以内]で、明日のAMS/感染症診療にどう活きるか。重要キーワードは**太字**にすること
 
 ## まず一言で
 このレビューが何を扱い、何を伝えようとしているかを1〜2文で要約してください。
 
 ## レビューの概要
-- **対象テーマ・範囲**: 何について・どこまでカバーしているか
-- **執筆の目的**: なぜこのレビューが書かれたか
+- **対象テーマ・範囲**: 感染症の種類、菌種、抗菌薬等について何をどこまでカバーしているか
+- **執筆の目的**: なぜこのレビューが書かれたか（新たなエビデンス整理、ガイドライン前の知見整理等）
 
 ## 主なエビデンスのまとめ
-（3〜5点の箇条書きで、臨床的に重要な知見を記載）
+（3〜5点の箇条書きで、AMS・感染症診療に重要な知見を記載）
 
 ## 現時点での知見のギャップ・今後の課題
-- まだ明らかになっていないこと
+- まだ明らかになっていないこと（最適投与期間、耐性菌に対する代替療法等）
 - 今後必要な研究
 
-## 日本の臨床への実践メモ
+## 日本のAMS・実臨床への実践メモ
 - 現場で使える示唆
-- 日本の医療環境での適用可能性
+- 院内感染対策・AMS活動への応用可能性
 
 重要度の基準：
-★★★★★：明日の診療方針に直結する、必ず読むべきパラダイムシフト
-★★★★☆：実用性が高く、知っておくべき重要な知見
-★★★☆☆：特定の条件下で役立つ、または興味深い知見
+★★★★★：明日のAMS介入・診療方針に直結するパラダイムシフト
+★★★★☆：院内プロトコール改訂を検討すべき重要な知見
+★★★☆☆：特定の感染症・菌種で役立つ
 ★★☆☆☆：参考程度
 ★☆☆☆☆：現在の業務への直接的な影響は少ない
 
@@ -425,10 +445,10 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
 """
 
     def _build_guideline_prompt(self, paper: Paper) -> str:
-        """ガイドライン向けプロンプト"""
+        """ガイドライン向けプロンプト（AMS特化）"""
         paper_info = self._build_paper_info(paper)
-        return f"""あなたは{self.specialty_name}の専門医であり、優秀な医師アシスタントです。
-以下のガイドラインについて、忙しい{self.specialty_name}が短時間で要点を把握できるよう、日本語で要約を作成してください。
+        return f"""あなたは感染症専門医・AMS薬剤師として最高水準の批判的論文評価能力を持ちます。
+以下のガイドラインについて、忙しい{self.specialty_name}の専門家が短時間で要点を把握できるよう、日本語で要約を作成してください。
 
 {paper_info}
 
@@ -438,32 +458,38 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
 ## サマリーインデックス情報
 - **重要度**: ★5段階で表記（例：★★★★☆）
 - **結論**: [40文字以内]で、このガイドラインの最重要メッセージ
-- **実用**: [50文字以内]で、明日の臨床にどう活きるか。重要キーワードは**太字**にすること
+- **実用**: [50文字以内]で、明日のAMS/感染症診療にどう活きるか。重要キーワードは**太字**にすること
 
 ## まず一言で
 このガイドラインの対象と最重要メッセージを1〜2文で要約してください。
 
 ## ガイドラインの概要
-- **対象疾患・領域**: 何の疾患・状況を対象としているか
-- **発行機関**: 誰が発行したか（ESC/AHA/ACC/JCS等）
+- **対象疾患・領域**: 感染症の種類、菌種、感染部位等を対象としているか
+- **発行機関**: 誰が発行したか（IDSA/ESCMID/JAID/WHO等）
 - **対象読者**: 誰に向けたガイドラインか
 
 ## 主要推奨事項（3〜5点）
 （各推奨事項について、推奨クラスと根拠レベルを必ず記載）
-- 例: 【Class I / Level A】〇〇患者には△△を推奨する
+- 例: 【Strong / High quality evidence】○○患者には△△を第一選択として推奨する
+
+## AMS観点でのポイント
+- de-escalationの推奨はあるか
+- 投与期間の推奨（短縮化・延長の根拠）
+- IV→PO切り替えの基準
+- 耐性菌・カルバペネムスペアリングへの推奨
 
 ## 前回版からの主な変更点
 （前回版との比較が明記されていれば記載。なければ「本文中に明記なし」）
 
-## 日本の実臨床での注意点
-- 国内ガイドライン（JCS等）との差異があれば記載
+## 日本の実臨床・AMSでの注意点
+- IDSA等海外ガイドラインとJAID（日本感染症学会）ガイドラインとの差異
 - 日本未承認薬・保険適用外の推奨があれば明記
-- 日本の医療環境での実装上の課題
+- 日本の耐性菌疫学・薬剤感受性状況との整合性
 
 重要度の基準：
-★★★★★：明日の診療方針に直結する、必ず読むべきパラダイムシフト
-★★★★☆：実用性が高く、知っておくべき重要な知見
-★★★☆☆：特定の条件下で役立つ、または興味深い知見
+★★★★★：明日のAMS介入・診療方針に直結するパラダイムシフト
+★★★★☆：院内プロトコール改訂を検討すべき重要な知見
+★★★☆☆：特定の感染症・菌種で役立つ
 ★★☆☆☆：参考程度
 ★☆☆☆☆：現在の業務への直接的な影響は少ない
 
@@ -500,17 +526,382 @@ MeSH用語: {", ".join(paper.mesh_terms[:10]) if paper.mesh_terms else "N/A"}
         if matched_types:
             reasons.append(f"研究デザインが強固（{', '.join(matched_types)}）")
 
-        # 専門領域マッチ
+        # 専門領域マッチ（AMS特化）
         primary = self.config.get("specialties", {}).get("primary", [])
         title_lower = paper.title.lower()
-        matched_areas = [
-            s for s in primary if s.lower() in title_lower
-        ]
+        matched_areas = [s for s in primary if s.lower() in title_lower]
         if matched_areas:
             reasons.append(
-                f"最優先領域に関連（{', '.join(matched_areas)}）"
+                f"AMS/感染症優先領域に関連（{', '.join(matched_areas[:2])}）"
             )
+
+        # AMS特化ボーナスキーワードチェック
+        ams = self.config.get("ams_high_priority", {})
+        text = (paper.title + " " + paper.abstract).lower()
+        for category, keywords in ams.items():
+            matched_kw = [k for k in keywords if k.lower() in text]
+            if matched_kw:
+                reasons.append(f"AMS重要キーワード含む（{matched_kw[0]}）")
+                break
 
         if reasons:
             return "選出理由: " + "; ".join(reasons)
-        return "選出理由: 臨床的重要性が高いと判断"
+        return "選出理由: 感染症・AMS臨床的重要性が高いと判断"
+
+# ===================================================================
+# 医学論文自動収集・要約システム 設定ファイル
+# 感染症科 / 抗菌薬適正使用支援（AMS）専用設定
+# Yokosuka City University Medical Center - 薬剤部
+# ===================================================================
+
+# --- 検索設定 ---
+search:
+  days_back: 7
+  max_results: 200
+  top_n: 10
+  detailed_top_n: 10
+
+# --- 専門領域名（表示・プロンプトに使用） ---
+specialty_name: "感染症科・AMS（抗菌薬適正使用支援）"
+
+# --- 専門領域 ---
+specialties:
+  primary:
+    - antimicrobial stewardship
+    - antibiotic stewardship
+    - infectious disease
+    - bacteremia
+    - sepsis
+    - bloodstream infection
+    - antimicrobial resistance
+    - multidrug resistant
+    - carbapenem-resistant
+    - MRSA
+    - vancomycin-resistant
+    - ESBL
+    - de-escalation
+    - IV to oral
+    - antibiotic duration
+    - antibiotic prophylaxis
+    - surgical site infection
+    - perioperative prophylaxis
+  secondary:
+    - Staphylococcus aureus
+    - Pseudomonas aeruginosa
+    - Enterococcus
+    - Klebsiella pneumoniae
+    - Acinetobacter baumannii
+    - Clostridioides difficile
+    - Candida
+    - fungal infection
+    - pneumonia
+    - urinary tract infection
+    - intraabdominal infection
+    - endocarditis
+    - osteomyelitis
+    - meningitis
+    - febrile neutropenia
+    - COVID-19
+    - influenza
+    - PK/PD
+    - minimum inhibitory concentration
+    - therapeutic drug monitoring
+    - vancomycin AUC
+    - beta-lactam
+
+# --- 優先ジャーナル ---
+journals:
+  # Tier 1 - 感染症・AMS最高権威誌 + 総合医学誌
+  tier1:
+    - "Clin Infect Dis"
+    - "Lancet Infect Dis"
+    - "JAMA"
+    - "N Engl J Med"
+    - "Lancet"
+    - "BMJ"
+    - "Ann Intern Med"
+    - "Nat Med"
+    - "J Infect Dis"
+    - "Antimicrob Agents Chemother"
+  # Tier 2 - 感染症・抗菌薬専門誌
+  tier2:
+    - "J Antimicrob Chemother"
+    - "Int J Antimicrob Agents"
+    - "Infect Control Hosp Epidemiol"
+    - "Am J Infect Control"
+    - "Open Forum Infect Dis"
+    - "Clin Microbiol Infect"
+    - "Eur J Clin Microbiol Infect Dis"
+    - "Diagn Microbiol Infect Dis"
+    - "J Hosp Infect"
+    - "Infection"
+  # Tier 3 - 重症系・関連専門誌
+  tier3:
+    - "Intensive Care Med"
+    - "Crit Care Med"
+    - "Crit Care"
+    - "Chest"
+    - "JAMA Intern Med"
+    - "JAMA Netw Open"
+    - "Am J Respir Crit Care Med"
+    - "Ann Emerg Med"
+    - "J Clin Microbiol"
+    - "Microbiol Spectr"
+    - "Antibiotics (Basel)"
+    - "Pathogens"
+    - "Emerg Infect Dis"
+    - "Euro Surveill"
+
+# --- 論文タイプスコア ---
+study_type_scores:
+  "Randomized Controlled Trial": 10
+  "Meta-Analysis": 9
+  "Systematic Review": 9
+  "Clinical Trial": 8
+  "Multicenter Study": 7
+  "Observational Study": 6
+  "Cohort Study": 6
+  "Practice Guideline": 10
+  "Guideline": 10
+  "Review": 4
+  "Case Reports": 1
+  "Editorial": 2
+  "Comment": 1
+  "Letter": 1
+
+# --- 除外する論文タイプ ---
+exclude_types:
+  - "Case Reports"
+  - "Editorial"
+  - "Comment"
+  - "Letter"
+  - "Published Erratum"
+
+# --- AI要約設定（Claude API） ---
+ai:
+  # Claude モデル フォールバックチェーン（順に試行）
+  model_chain:
+    - "claude-opus-4-6"
+    - "claude-sonnet-4-6"
+    - "claude-haiku-4-5-20251001"
+  timeout: 120
+  max_retries: 3
+  retry_delay: 5
+
+# --- 出力設定 ---
+output:
+  directory: "output"
+  filename_format: "AMS論文レビュー_{date}.docx"
+
+# --- 履歴管理 ---
+history:
+  file: "history.json"
+  retention_days: 180
+
+# --- 臨床関連性スコア設定（AMS特化） ---
+clinical_relevance:
+  # 高臨床的価値キーワード（+5点）
+  high_value:
+    - "randomized controlled trial"
+    - "clinical practice guideline"
+    - "treatment outcome"
+    - "all-cause mortality"
+    - "clinical failure"
+    - "microbiological eradication"
+    - "primary endpoint"
+    - "de-escalation"
+    - "iv to oral"
+    - "intravenous to oral"
+    - "antibiotic duration"
+    - "days of therapy"
+    - "antibiotic stewardship program"
+    - "carbapenem-sparing"
+    - "30-day mortality"
+    - "90-day mortality"
+    - "treatment success"
+    - "resistance emergence"
+  # 実臨床への応用性キーワード（+3点）
+  practical:
+    - "real-world"
+    - "routine clinical"
+    - "pragmatic"
+    - "clinical decision"
+    - "patient management"
+    - "standard of care"
+    - "clinical practice"
+    - "clinical outcome"
+    - "optimal duration"
+    - "dose optimization"
+    - "therapeutic drug monitoring"
+    - "AUC-guided"
+    - "PK/PD"
+    - "hospital-acquired"
+    - "healthcare-associated"
+    - "intensive care unit"
+    - "surgical prophylaxis"
+    - "perioperative"
+  # 日本・アジア人データ（+2点）
+  japan_relevant:
+    - "japanese"
+    - "asian"
+    - "japan"
+    - "east asian"
+    - "asia-pacific"
+
+# --- 基礎研究除外フレーズ ---
+basic_science_exclude:
+  - "in vitro"
+  - "mouse model"
+  - "rat model"
+  - "cell line"
+  - "ex vivo"
+  - "murine"
+  - "knockout mice"
+  - "animal model"
+  - "zebrafish"
+  - "in vivo murine"
+
+# --- AMS特化ボーナススコア設定（+3点） ---
+ams_high_priority:
+  interventions:
+    - "antibiotic stewardship"
+    - "antimicrobial stewardship"
+    - "de-escalation"
+    - "iv-to-oral"
+    - "intravenous to oral switch"
+    - "duration of therapy"
+    - "antibiotic duration"
+    - "days of antibiotic"
+    - "surgical prophylaxis"
+    - "perioperative antimicrobial"
+  pathogens:
+    - "MRSA"
+    - "methicillin-resistant Staphylococcus aureus"
+    - "carbapenem-resistant"
+    - "CRE"
+    - "VRE"
+    - "ESBL"
+    - "Clostridioides difficile"
+    - "CDI"
+    - "Candida auris"
+    - "pandrug-resistant"
+    - "extensively drug-resistant"
+  biomarkers:
+    - "procalcitonin"
+    - "PCT-guided"
+    - "beta-D-glucan"
+    - "galactomannan"
+    - "blood culture"
+    - "AUC/MIC"
+    - "time to positivity"
+
+# --- 曜日別テーマ設定（AMS/ID特化） ---
+daily_themes:
+  Monday:
+    theme_name: "bacteremia・血流感染"
+    specialties:
+      - bacteremia
+      - bloodstream infection
+      - Staphylococcus aureus bacteremia
+      - endocarditis
+      - central line-associated bloodstream infection
+      - CLABSI
+    journals:
+      - "Clin Infect Dis"
+      - "J Infect Dis"
+      - "Open Forum Infect Dis"
+
+  Tuesday:
+    theme_name: "耐性菌・AMR"
+    specialties:
+      - antimicrobial resistance
+      - multidrug resistant
+      - carbapenem-resistant
+      - MRSA
+      - ESBL
+      - extensively drug-resistant
+      - pandrug-resistant
+    journals:
+      - "Antimicrob Agents Chemother"
+      - "J Antimicrob Chemother"
+      - "Int J Antimicrob Agents"
+      - "Lancet Infect Dis"
+
+  Wednesday:
+    theme_name: "AMS介入・抗菌薬適正使用"
+    specialties:
+      - antibiotic stewardship
+      - antimicrobial stewardship
+      - de-escalation
+      - iv to oral
+      - antibiotic duration
+      - antibiotic prophylaxis
+      - days of therapy
+    journals:
+      - "Infect Control Hosp Epidemiol"
+      - "Am J Infect Control"
+      - "Clin Infect Dis"
+      - "J Hosp Infect"
+
+  Thursday:
+    theme_name: "敗血症・重症感染症"
+    specialties:
+      - sepsis
+      - septic shock
+      - severe infection
+      - febrile neutropenia
+      - hospital-acquired pneumonia
+      - ventilator-associated pneumonia
+    journals:
+      - "Intensive Care Med"
+      - "Crit Care Med"
+      - "Am J Respir Crit Care Med"
+      - "Crit Care"
+
+  Friday:
+    theme_name: "外科感染・周術期予防"
+    specialties:
+      - surgical site infection
+      - perioperative prophylaxis
+      - surgical prophylaxis
+      - intraabdominal infection
+      - complicated skin and soft tissue infection
+    journals:
+      - "Infect Control Hosp Epidemiol"
+      - "J Am Coll Surg"
+      - "Ann Surg"
+      - "Clin Infect Dis"
+
+  Saturday:
+    theme_name: "PK/PD・TDM・薬物投与最適化"
+    specialties:
+      - pharmacokinetics
+      - pharmacodynamics
+      - PK/PD
+      - therapeutic drug monitoring
+      - vancomycin AUC
+      - extended infusion
+      - beta-lactam TDM
+      - dose optimization
+    journals:
+      - "Antimicrob Agents Chemother"
+      - "J Antimicrob Chemother"
+      - "Clin Pharmacokinet"
+      - "Eur J Clin Pharmacol"
+
+  Sunday:
+    theme_name: "ウイルス感染症・真菌感染症"
+    specialties:
+      - fungal infection
+      - invasive aspergillosis
+      - candidemia
+      - Candida auris
+      - COVID-19
+      - influenza
+      - antiviral
+      - antifungal
+    journals:
+      - "Clin Infect Dis"
+      - "Lancet Infect Dis"
+      - "J Infect Dis"
+      - "Open Forum Infect Dis"
