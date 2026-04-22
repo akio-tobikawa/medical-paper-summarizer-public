@@ -1,11 +1,9 @@
-name: Daily Paper Summary and Email
+name: Daily AMS Paper Summary and Email
 
 on:
   schedule:
-    # 毎日UTC時間の22:00（日本時間の翌朝07:00）に実行
     - cron: '0 22 * * *'
   workflow_dispatch:
-    # 手動実行用トリガー
 
 concurrency:
   group: daily-summary
@@ -33,35 +31,34 @@ jobs:
       - name: Validate required secrets
         run: |
           missing=""
-          [ -z "$GEMINI_API_KEY" ] && missing="$missing GEMINI_API_KEY"
-          [ -z "$NCBI_EMAIL" ] && missing="$missing NCBI_EMAIL"
-          [ -z "$NCBI_API_KEY" ] && missing="$missing NCBI_API_KEY"
-          [ -z "$GMAIL_USERNAME" ] && missing="$missing GMAIL_USERNAME"
+          [ -z "$ANTHROPIC_API_KEY" ] && missing="$missing ANTHROPIC_API_KEY"
+          [ -z "$NCBI_EMAIL" ]        && missing="$missing NCBI_EMAIL"
+          [ -z "$NCBI_API_KEY" ]      && missing="$missing NCBI_API_KEY"
+          [ -z "$GMAIL_USERNAME" ]    && missing="$missing GMAIL_USERNAME"
           [ -z "$GMAIL_APP_PASSWORD" ] && missing="$missing GMAIL_APP_PASSWORD"
-          [ -z "$GMAIL_RECIPIENT" ] && missing="$missing GMAIL_RECIPIENT"
+          [ -z "$GMAIL_RECIPIENT" ]   && missing="$missing GMAIL_RECIPIENT"
           if [ -n "$missing" ]; then
             echo "エラー: 以下のSecretsが設定されていません:$missing"
-            echo "Settings → Secrets and variables → Actions から設定してください。"
             exit 1
           fi
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          NCBI_EMAIL: ${{ secrets.NCBI_EMAIL }}
-          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
-          GMAIL_USERNAME: ${{ secrets.GMAIL_USERNAME }}
+          ANTHROPIC_API_KEY:  ${{ secrets.ANTHROPIC_API_KEY }}
+          NCBI_EMAIL:         ${{ secrets.NCBI_EMAIL }}
+          NCBI_API_KEY:       ${{ secrets.NCBI_API_KEY }}
+          GMAIL_USERNAME:     ${{ secrets.GMAIL_USERNAME }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-          GMAIL_RECIPIENT: ${{ secrets.GMAIL_RECIPIENT }}
+          GMAIL_RECIPIENT:    ${{ secrets.GMAIL_RECIPIENT }}
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run summarizer
+      - name: Run AMS summarizer
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          NCBI_EMAIL: ${{ secrets.NCBI_EMAIL }}
-          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NCBI_EMAIL:        ${{ secrets.NCBI_EMAIL }}
+          NCBI_API_KEY:      ${{ secrets.NCBI_API_KEY }}
         run: |
           mkdir -p output
           rm -f output/*.docx
@@ -72,13 +69,13 @@ jobs:
         run: |
           WORD_FILE=$(ls -t output/*.docx 2>/dev/null | head -n 1 || true)
           if [ -z "$WORD_FILE" ] || [ ! -f "$WORD_FILE" ]; then
-            echo "本日の新規論文はありませんでした。メール送信をスキップします。"
+            echo "本日の新規論文はありませんでした。"
             echo "file_found=false" >> $GITHUB_OUTPUT
             exit 0
           fi
-          echo "file_path=$WORD_FILE" >> $GITHUB_OUTPUT
+          echo "file_path=$WORD_FILE"            >> $GITHUB_OUTPUT
           echo "file_name=$(basename $WORD_FILE)" >> $GITHUB_OUTPUT
-          echo "file_found=true" >> $GITHUB_OUTPUT
+          echo "file_found=true"                  >> $GITHUB_OUTPUT
 
       - name: Send Summary via Email
         if: steps.find_file.outputs.file_found == 'true'
@@ -89,15 +86,14 @@ jobs:
           secure: true
           username: ${{ secrets.GMAIL_USERNAME }}
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
-          subject: 🩺【医学論文レビュー】新着の論文要約をお届けします
+          subject: 🦠【AMS論文レビュー】感染症・抗菌薬適正使用 最新論文レポート
           to: ${{ secrets.GMAIL_RECIPIENT }}
-          from: "AI論文要約システム"
+          from: "AMS論文自動要約システム"
           body: |
-            本日の最新医学論文の要約が完了しました。
-            添付のWordファイル（${{ steps.find_file.outputs.file_name }}）をご確認ください。
-
+            本日の感染症・AMS最新論文要約が完成しました。
+            添付のWordファイルをご確認ください。
             --
-            自動生成: GitHub Actions
+            Powered by Claude AI + PubMed API
           attachments: ${{ steps.find_file.outputs.file_path }}
 
       - name: Save history
@@ -105,6 +101,6 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add history.json
-          git commit -m "chore: Update paper history" || echo "No changes to commit"
+          git commit -m "chore: Update paper history [skip ci]" || echo "No changes to commit"
           git pull --rebase --autostash origin ${{ github.ref_name }}
           git push
