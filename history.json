@@ -1,3 +1,24 @@
 {
-  "reported_pmids": {}
+  "reported_pmids": {
+    "41981820": {
+      "title": "Impact of Procalcitonin Testing on Antibiotic Use in Patients Hospitalized With Community-Acquired Pneumonia: A Multi-Hospital Cohort Study.",
+      "reported_at": "2026-04-22T06:49:00.244242"
+    },
+    "42012353": {
+      "title": "Electronic Clinical Quality Measures of Antibiotic Use in Hospitalized Adults with Uncomplicated Community-acquired Pneumonia.",
+      "reported_at": "2026-04-22T06:49:00.244242"
+    },
+    "42001937": {
+      "title": "Nudging in MicroBiology Laboratory Evaluation (NiMBLE): A systematic review and meta-analysis.",
+      "reported_at": "2026-04-22T06:49:00.244242"
+    },
+    "42007746": {
+      "title": "Advancing antimicrobial therapy: evaluating the ASTar (Q-linea) System for rapid AST in Gram-negative bloodstream infections.",
+      "reported_at": "2026-04-22T06:49:00.244242"
+    },
+    "42012579": {
+      "title": "Efficacy and safety of imipenem-cilastatin-relebactam in resistant infections: a systematic review and meta-analysis of randomized controlled trials.",
+      "reported_at": "2026-04-22T06:49:00.244242"
+    }
+  }
 }
