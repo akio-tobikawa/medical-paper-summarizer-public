@@ -84,8 +84,14 @@ class AISummarizer:
                     logger.info("→ 次のモデルに早めにフォールバックします")
                     break
 
+                except anthropic.AuthenticationError as e:
+                    logger.error(
+                        "ANTHROPIC_API_KEY が無効または期限切れです。"
+                        "GitHub Secrets の ANTHROPIC_API_KEY を確認してください。"
+                    )
+                    return None
+
                 except anthropic.APIStatusError as e:
-                    error_msg = str(e).lower()
                     logger.warning(
                         f"モデル {model_name} でAPIエラー"
                         f"（試行 {attempt + 1}）: {e}"

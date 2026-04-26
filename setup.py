@@ -171,9 +171,9 @@ BASE_CONFIG = {
     ],
     "ai": {
         "model_chain": [
-            "gemini-2.5-flash",
-            "gemini-2.5-flash-lite-preview-09-2025",
-            "gemini-2.0-flash"
+            "claude-opus-4-7",
+            "claude-sonnet-4-6",
+            "claude-haiku-4-5-20251001"
         ],
         "timeout": 120,
         "max_retries": 3,
