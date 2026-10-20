@@ -1,57 +1,5 @@
 {
   "reported_pmids": {
-    "41981820": {
-      "title": "Impact of Procalcitonin Testing on Antibiotic Use in Patients Hospitalized With Community-Acquired Pneumonia: A Multi-Hospital Cohort Study.",
-      "reported_at": "2026-04-22T06:49:00.244242"
-    },
-    "42012353": {
-      "title": "Electronic Clinical Quality Measures of Antibiotic Use in Hospitalized Adults with Uncomplicated Community-acquired Pneumonia.",
-      "reported_at": "2026-04-22T06:49:00.244242"
-    },
-    "42001937": {
-      "title": "Nudging in MicroBiology Laboratory Evaluation (NiMBLE): A systematic review and meta-analysis.",
-      "reported_at": "2026-04-22T06:49:00.244242"
-    },
-    "42007746": {
-      "title": "Advancing antimicrobial therapy: evaluating the ASTar (Q-linea) System for rapid AST in Gram-negative bloodstream infections.",
-      "reported_at": "2026-04-22T06:49:00.244242"
-    },
-    "42012579": {
-      "title": "Efficacy and safety of imipenem-cilastatin-relebactam in resistant infections: a systematic review and meta-analysis of randomized controlled trials.",
-      "reported_at": "2026-04-22T06:49:00.244242"
-    },
-    "41999287": {
-      "title": "Fast Antimicrobial Susceptibility Testing for Gram-Negative Bacteremia: The FAST Randomized Clinical Trial.",
-      "reported_at": "2026-04-22T06:50:59.189401"
-    },
-    "42012220": {
-      "title": "Point-Counterpoint: Should MRSA nares testing be used as a tool for vancomycin de-escalation outside of pneumonia?",
-      "reported_at": "2026-04-22T06:50:59.189401"
-    },
-    "42010196": {
-      "title": "Multidrug-resistant Klebsiella pneumoniae in oncology intensive care units: selected genetic markers and clinical predictors.",
-      "reported_at": "2026-04-22T06:50:59.189401"
-    },
-    "42012213": {
-      "title": "Analytical validation of a highly accurate and reliable next-generation sequencing-based urine assay.",
-      "reported_at": "2026-04-22T06:50:59.189401"
-    },
-    "41865411": {
-      "title": "National Estimates of Pediatric Sepsis in US Hospitals Using Clinical Data.",
-      "reported_at": "2026-04-23T00:01:13.479390"
-    },
-    "41999948": {
-      "title": "Pharmacokinetics, target attainment and outcomes of piperacillin/tazobactam in critically ill patients receiving continuous infusion with therapeutic drug monitoring: a retrospective analysis.",
-      "reported_at": "2026-04-23T00:01:13.479390"
-    },
-    "42008655": {
-      "title": "Population pharmacokinetics and safety of continuous oxacillin in preterm and term neonates and infants.",
-      "reported_at": "2026-04-23T00:01:13.479390"
-    },
-    "42017661": {
-      "title": "Bridging the gap: organotypic models to study late-onset group B streptococcus infection.",
-      "reported_at": "2026-04-23T00:01:13.479390"
-    },
     "42023876": {
       "title": "Diagnostic performance of β-(1→3)-D-glucan, two <i>Candida</i> antigen, and five anti-<i>Candida</i> antibody assays in ICU patients with sepsis and high risk for invasive candidiasis: a secondary endpoint of the CandiSep randomized clinical trial.",
       "reported_at": "2026-04-23T22:39:05.761655"
@@ -3207,6 +3155,26 @@
     "42869289": {
       "title": "How do I manage candiduria: practical algorithms and remaining conundrums in 2026.",
       "reported_at": "2026-10-18T23:54:56.667803"
+    },
+    "42140752": {
+      "title": "Genomic and Clinical Features Associated With Reduced Susceptibility to Cefiderocol and Cross-Resistance to β-Lactam/β-Lactamase Inhibitors in a Global Cohort of Pseudomonas aeruginosa.",
+      "reported_at": "2026-10-20T00:55:57.011457"
+    },
+    "42885188": {
+      "title": "Predictive value of methicillin-resistant <i>Staphylococcus aureus</i> (MRSA) nasal screening for MRSA in a clinical culture in solid organ transplant recipients.",
+      "reported_at": "2026-10-20T00:55:57.011457"
+    },
+    "42895838": {
+      "title": "Generating Actionable Data From Antimicrobial Resistance Surveillance: Insights From the Fleming Fund's International Experience.",
+      "reported_at": "2026-10-20T00:55:57.011457"
+    },
+    "42895836": {
+      "title": "Surveillance Data Use Through the Fleming Fund: Informing Action on Antimicrobial Resistance in Low- and Middle-Income Countries.",
+      "reported_at": "2026-10-20T00:55:57.011457"
+    },
+    "42895343": {
+      "title": "Clinical and genomic features of <i>Chryseobacterium</i> species isolated from clinical cultures.",
+      "reported_at": "2026-10-20T00:55:57.011457"
     }
   }
 }
