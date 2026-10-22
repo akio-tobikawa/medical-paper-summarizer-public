@@ -1,13 +1,5 @@
 {
   "reported_pmids": {
-    "42017558": {
-      "title": "Reframing Surgical Risk in Frailty: Causal Mediation Analysis of Mortality and Readmission after Pancreatectomy.",
-      "reported_at": "2026-04-24T22:35:13.549933"
-    },
-    "42011874": {
-      "title": "Generative artificial intelligence for surgical site infection surveillance.",
-      "reported_at": "2026-04-24T22:35:13.549933"
-    },
     "42003577": {
       "title": "Population pharmacokinetics and exposure-response analysis of levofloxacin in Chinese pediatric patients with severe refractory <i>Mycoplasma pneumoniae</i> pneumonia.",
       "reported_at": "2026-04-25T22:31:10.263516"
@@ -3191,6 +3183,10 @@
     "42878671": {
       "title": "Progressing From Association to Causation: Examining Prior Antibiotic Exposure and Antimicrobial Resistance Across Three US Health Systems Using Causal Machine Learning.",
       "reported_at": "2026-10-21T00:23:29.103317"
+    },
+    "42892349": {
+      "title": "Effect of clarithromycin on the circulating inflammatory proteome in community-acquired pneumonia: a secondary analysis of the ACCESS trial.",
+      "reported_at": "2026-10-22T00:21:39.289600"
     }
   }
 }
