@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42027100": {
-      "title": "Racial disparities in healthcare-associated infections: a systematic review and meta-analysis.",
-      "reported_at": "2026-04-27T22:44:27.274214"
-    },
-    "42041379": {
-      "title": "Cefiderocol Targeted Treatment for Multidrug-Resistant Gram-Negative Infections: An Observational Cohort Study.",
-      "reported_at": "2026-04-27T22:44:27.274214"
-    },
-    "42037396": {
-      "title": "Restoration of daptomycin sensitivity with adjunctive cefazolin is associated with C-terminal MprF mutations in MRSA bacteremia isolates.",
-      "reported_at": "2026-04-27T22:44:27.274214"
-    },
-    "42012196": {
-      "title": "Profiling of genetic determinants required for fitness of community-associated methicillin-resistant <i>Staphylococcus aureus</i> in human blood.",
-      "reported_at": "2026-04-27T22:44:27.274214"
-    },
-    "42011882": {
-      "title": "Development and implementation of a quality improvement framework for the prevention hospital-onset bacteremia and fungemia.",
-      "reported_at": "2026-04-27T22:44:27.274214"
-    },
     "42037382": {
       "title": "Difficult-to-treat resistance (DTR), treatment, and outcomes of carbapenem-resistant Enterobacterales infections in the setting of IMP-type carbapenemase predominance in Japan.",
       "reported_at": "2026-04-28T22:52:15.814698"
@@ -3127,6 +3107,10 @@
     "42911094": {
       "title": "<i>In vitro</i> and <i>in vivo</i> activity of OSUAB-0284, a preclinical candidate for <i>Staphylococcus aureus</i> infections.",
       "reported_at": "2026-10-24T00:14:06.444544"
+    },
+    "42919001": {
+      "title": "The Variability in the Pharmacokinetics of Follitropin Alfa: A Systematic Review.",
+      "reported_at": "2026-10-24T23:56:44.916589"
     }
   }
 }
