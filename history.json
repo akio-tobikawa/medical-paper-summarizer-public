@@ -1,81 +1,5 @@
 {
   "reported_pmids": {
-    "42003577": {
-      "title": "Population pharmacokinetics and exposure-response analysis of levofloxacin in Chinese pediatric patients with severe refractory <i>Mycoplasma pneumoniae</i> pneumonia.",
-      "reported_at": "2026-04-25T22:31:10.263516"
-    },
-    "42010119": {
-      "title": "Cibisatamab and FAP-4-1BBL in microsatellite-stable colorectal cancer: a phase 1b trial.",
-      "reported_at": "2026-04-25T22:31:10.263516"
-    },
-    "42003587": {
-      "title": "Preclinical evaluation of high-dose Griffithsin carrageenan fast-dissolving insert for HIV, HSV-2, and HPV prevention.",
-      "reported_at": "2026-04-25T22:31:10.263516"
-    },
-    "42003576": {
-      "title": "Population pharmacokinetic modeling and simulation-informed ceftazidime dosing in Chinese neonates using quantitative dried blood spot micro-sampling.",
-      "reported_at": "2026-04-25T22:31:10.263516"
-    },
-    "42003581": {
-      "title": "Mass balance study of [<sup>14</sup>C]Netanasvir Phosphate in healthy Chinese participants.",
-      "reported_at": "2026-04-25T22:31:10.263516"
-    },
-    "42019019": {
-      "title": "Oral Nirmatrelvir-Ritonavir for Covid-19 in Higher-Risk Outpatients.",
-      "reported_at": "2026-04-26T04:57:56.935735"
-    },
-    "42017206": {
-      "title": "Ensitrelvir for the treatment of hospitalized adults with COVID-19: an international phase 3 randomized placebo-controlled trial.",
-      "reported_at": "2026-04-26T04:57:56.935735"
-    },
-    "42015519": {
-      "title": "Fosmanogepix treatment for coccidioidomycosis under an expanded access program.",
-      "reported_at": "2026-04-26T04:57:56.935735"
-    },
-    "42033146": {
-      "title": "A Phase 1/2 Dose-Ranging Safety and Immunogenicity Study of mRNA-Based Candidate Pandemic Influenza Vaccines in Healthy Adults.",
-      "reported_at": "2026-04-26T04:57:56.935735"
-    },
-    "42012259": {
-      "title": "Human natural killer cells exhibit potent antifungal activity against azole-resistant <i>Aspergillus fumigatus</i> and diverse filamentous fungi.",
-      "reported_at": "2026-04-26T04:57:56.935735"
-    },
-    "42025849": {
-      "title": "Six-Year Trends in Healthcare-Associated Infections in Chilean Hospitals: A National Surveillance Analysis (2017-2022).",
-      "reported_at": "2026-04-26T10:41:20.957709"
-    },
-    "42007838": {
-      "title": "Yeast identification, antifungal susceptibility testing, and <i>Candida auris</i> screening practices at acute care hospitals and long-term acute care hospitals, United States.",
-      "reported_at": "2026-04-26T10:41:20.957709"
-    },
-    "42008640": {
-      "title": "Antimicrobial elution patterns correlate with antibacterial and antifungal activities of three antimicrobial central venous catheters in serum.",
-      "reported_at": "2026-04-26T10:41:20.957709"
-    },
-    "42016365": {
-      "title": "Azole Resistance in <i>Aspergillus fumigatus</i> From Diverse Environments in Ohio, United States, Is Primarily Driven by TR<sub>34</sub>/L98H and TR<sub>46</sub>/Y121F/T289A Environmental Signatures.",
-      "reported_at": "2026-04-26T10:41:20.957709"
-    },
-    "42008658": {
-      "title": "Evaluation of the cytochrome P450-mediated drug interaction profile of olorofim.",
-      "reported_at": "2026-04-26T10:41:20.957709"
-    },
-    "42008809": {
-      "title": "Effectiveness of Nonpharmacologic Treatments for Chronic Low Back Pain : A Sequential, Multiple-Assignment, Randomized Trial.",
-      "reported_at": "2026-04-26T22:32:54.794781"
-    },
-    "42001456": {
-      "title": "First report on remdesivir use for the treatment of respiratory syncytial virus in five allogeneic hematopoietic cell transplant recipients.",
-      "reported_at": "2026-04-26T22:32:54.794781"
-    },
-    "42025697": {
-      "title": "Detection of Airborne Respiratory Viruses in Paediatric Patient Rooms in Guangzhou, China.",
-      "reported_at": "2026-04-26T22:32:54.794781"
-    },
-    "42012212": {
-      "title": "Multicenter surveillance of antifungal susceptibility of clinical <i>Aspergillus</i> isolates to conventional and novel antifungal agents in Taiwan, 2021-2023.",
-      "reported_at": "2026-04-26T22:32:54.794781"
-    },
     "42027100": {
       "title": "Racial disparities in healthcare-associated infections: a systematic review and meta-analysis.",
       "reported_at": "2026-04-27T22:44:27.274214"
@@ -3187,6 +3111,22 @@
     "42892349": {
       "title": "Effect of clarithromycin on the circulating inflammatory proteome in community-acquired pneumonia: a secondary analysis of the ACCESS trial.",
       "reported_at": "2026-10-22T00:21:39.289600"
+    },
+    "42891690": {
+      "title": "From historical dosing to precision dosing: Modernising tobramycin monitoring in people with cystic fibrosis.",
+      "reported_at": "2026-10-24T00:14:06.444544"
+    },
+    "42911397": {
+      "title": "Principles of drug dosing for obese patients in the intensive care unit.",
+      "reported_at": "2026-10-24T00:14:06.444544"
+    },
+    "42911540": {
+      "title": "Population Pharmacokinetic/Pharmacodynamic Analysis of HHT120, a Novel Direct Thrombin Inhibitor, in Healthy Participants from a Phase I Clinical Trial.",
+      "reported_at": "2026-10-24T00:14:06.444544"
+    },
+    "42911094": {
+      "title": "<i>In vitro</i> and <i>in vivo</i> activity of OSUAB-0284, a preclinical candidate for <i>Staphylococcus aureus</i> infections.",
+      "reported_at": "2026-10-24T00:14:06.444544"
     }
   }
 }
