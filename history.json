@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42047388": {
-      "title": "Antimicrobial decision-making under uncertainty in the high-stakes intensive care unit scenario: a critical interpretative synthesis.",
-      "reported_at": "2026-04-29T22:52:53.080611"
-    },
-    "42035777": {
-      "title": "Safety and efficacy of the monoclonal antibody L9LS for malaria prevention in children exposed to perennial malaria transmission in Kenya: a randomised, double-blind, placebo-controlled, phase 2 trial.",
-      "reported_at": "2026-04-29T22:52:53.080611"
-    },
-    "42053211": {
-      "title": "Assessment of the Prioritization of Diagnostics in National Action Plans for Antimicrobial Resistance.",
-      "reported_at": "2026-04-29T22:52:53.080611"
-    },
-    "42052289": {
-      "title": "Advancing Antimicrobial Stewardship With Diagnostic Excellence: The Role of Bayesian Reasoning.",
-      "reported_at": "2026-04-29T22:52:53.080611"
-    },
-    "42037421": {
-      "title": "Regional-local urinary antibiograms for long-term care homes: a population-wide cross-sectional study.",
-      "reported_at": "2026-04-29T22:52:53.080611"
-    },
     "41259754": {
       "title": "A Multicomponent Intervention to Improve Maternal Infection Outcomes.",
       "reported_at": "2026-04-30T22:48:09.485134"
@@ -3111,6 +3091,26 @@
     "42904653": {
       "title": "Exploratory associations of gut microbiota composition with HBeAg and HBsAg status in nucleos(t)ide analog-treated chronic hepatitis B.",
       "reported_at": "2026-10-25T23:46:37.911198"
+    },
+    "42932009": {
+      "title": "A targeted stewardship intervention improves the adequacy of antipseudomonal therapy after implementation of the EUCAST 2019 clinical category redefinitions.",
+      "reported_at": "2026-10-27T01:06:18.478316"
+    },
+    "42925126": {
+      "title": "Cefepime-Zidebactam for Infections Caused by Carbapenem-Resistant Gram-Negative Bacteria, Including Metallo-β-Lactamase Producers: A Phase 2, Open-Label, Single-Arm, Multicenter Study.",
+      "reported_at": "2026-10-27T01:06:18.478316"
+    },
+    "42932008": {
+      "title": "The prognostic value of a laboratory-based frailty index (FI-Lab) in carbapenem-resistant Acinetobacter baumannii infections: a multicentre cohort study.",
+      "reported_at": "2026-10-27T01:06:18.478316"
+    },
+    "42905258": {
+      "title": "Expanding threat of carbapenemase-producing <i>Escherichia coli</i> and <i>Klebsiella pneumoniae</i> in Peru: genomic and phenotypic evidence of high-risk clones dissemination.",
+      "reported_at": "2026-10-27T01:06:18.478316"
+    },
+    "42905260": {
+      "title": "A multivalent CPS-CRM197 conjugate vaccine protects against severe/fatal <i>Klebsiella pneumoniae</i> disease in a mouse infection model.",
+      "reported_at": "2026-10-27T01:06:18.478316"
     }
   }
 }
