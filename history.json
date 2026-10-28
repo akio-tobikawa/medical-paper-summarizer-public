@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "41259754": {
-      "title": "A Multicomponent Intervention to Improve Maternal Infection Outcomes.",
-      "reported_at": "2026-04-30T22:48:09.485134"
-    },
-    "42057084": {
-      "title": "Blood pressure response index trajectories identify distinct hemodynamic phenotypes and predict mortality in septic shock: a two-database retrospective cohort study.",
-      "reported_at": "2026-04-30T22:48:09.485134"
-    },
-    "42043555": {
-      "title": "Non-invasive intracranial pressure estimation in the intensive care unit: narrative review of methods and clinical applications.",
-      "reported_at": "2026-04-30T22:48:09.485134"
-    },
-    "40988120": {
-      "title": "Patient-reported Perceptions, Experiences, and Preferences Around Intravenous and Oral Antibiotics for the Treatment of Staphylococcus aureus Bacteremia: A Descriptive Qualitative Study.",
-      "reported_at": "2026-04-30T22:48:09.485134"
-    },
-    "42056616": {
-      "title": "Distribution characteristics and influencing factors of active cytomegalovirus infection in patients with hematological malignancies complicated with sepsis.",
-      "reported_at": "2026-04-30T22:48:09.485134"
-    },
     "42061754": {
       "title": "Association between Duration of Neurosurgical Craniotomy and Surgical Site Infection: A Prospective Cohort Study.",
       "reported_at": "2026-05-01T22:43:41.977445"
@@ -3111,6 +3091,26 @@
     "42905260": {
       "title": "A multivalent CPS-CRM197 conjugate vaccine protects against severe/fatal <i>Klebsiella pneumoniae</i> disease in a mouse infection model.",
       "reported_at": "2026-10-27T01:06:18.478316"
+    },
+    "42933051": {
+      "title": "Artificial intelligence in the diagnosis and identification of bacterial pathogens: Current advances and future perspectives.",
+      "reported_at": "2026-10-28T00:56:43.184851"
+    },
+    "42938782": {
+      "title": "Procalcitonin-Informed Decision-Making in Abdominal and Emergency Surgery: A WSES Position Paper.",
+      "reported_at": "2026-10-28T00:56:43.184851"
+    },
+    "42927794": {
+      "title": "Association of therapeutic antimicrobial class with incidence of acute complications and recurrent infection following non-severe streptococcal pharyngitis or tonsillitis.",
+      "reported_at": "2026-10-28T00:56:43.184851"
+    },
+    "42905370": {
+      "title": "Initial empiric carbapenem versus non-carbapenem β-lactam/β-lactamase inhibitor therapy in sepsis across simplified SENECA phenotypes: a retrospective study of two independent cohorts.",
+      "reported_at": "2026-10-28T00:56:43.184851"
+    },
+    "42937302": {
+      "title": "Whole genome-based characterization of virulence and antimicrobial resistance determinants in clinical <i>Campylobacter jejuni</i> isolates from Minnesota, 2018-2021.",
+      "reported_at": "2026-10-28T00:56:43.184851"
     }
   }
 }
