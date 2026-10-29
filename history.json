@@ -1,17 +1,5 @@
 {
   "reported_pmids": {
-    "42061754": {
-      "title": "Association between Duration of Neurosurgical Craniotomy and Surgical Site Infection: A Prospective Cohort Study.",
-      "reported_at": "2026-05-01T22:43:41.977445"
-    },
-    "41192618": {
-      "title": "Burden of early healthcare-associated infections after kidney or kidney-pancreas transplantations: A 6-year prospective surveillance in a French university reference center.",
-      "reported_at": "2026-05-01T22:43:41.977445"
-    },
-    "42057808": {
-      "title": "Methicillin-Resistant <i>Staphylococcus aureus</i> Nasal Swab Utilization as a Predictor for Methicillin-Resistant <i>Staphylococcus aureus</i> Skin and Soft Tissue Infections: A Systematic Review and Meta-analysis.",
-      "reported_at": "2026-05-01T22:43:41.977445"
-    },
     "41556663": {
       "title": "When and How to Use Subcutaneous Antibiotics.",
       "reported_at": "2026-05-02T22:35:08.145210"
@@ -3111,6 +3099,26 @@
     "42937302": {
       "title": "Whole genome-based characterization of virulence and antimicrobial resistance determinants in clinical <i>Campylobacter jejuni</i> isolates from Minnesota, 2018-2021.",
       "reported_at": "2026-10-28T00:56:43.184851"
+    },
+    "41556483": {
+      "title": "Diagnostic Yield of Repeat Blood Cultures and Risk Factors for Bloodstream Infection in Persistent Febrile Neutropenia.",
+      "reported_at": "2026-10-29T01:32:33.466642"
+    },
+    "42376964": {
+      "title": "Sepsis Diagnostic Excellence and Its Association With Mortality in Adults With Potential Infection.",
+      "reported_at": "2026-10-29T01:32:33.466642"
+    },
+    "42937359": {
+      "title": "AI/ML-enabled sepsis prediction systems: laboratory considerations from development to deployment.",
+      "reported_at": "2026-10-29T01:32:33.466642"
+    },
+    "42919451": {
+      "title": "Brachial-to-Radial Pressure Gradient in Critically Ill Patients Treated With Vasoactive Agents: A Prospective Observational Study.",
+      "reported_at": "2026-10-29T01:32:33.466642"
+    },
+    "42925060": {
+      "title": "Establishment and preliminary application of the <i>Mo</i> RPA-CRISPR/Cas12a rapid detection method.",
+      "reported_at": "2026-10-29T01:32:33.466642"
     }
   }
 }
