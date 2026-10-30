@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "41556663": {
-      "title": "When and How to Use Subcutaneous Antibiotics.",
-      "reported_at": "2026-05-02T22:35:08.145210"
-    },
-    "41589392": {
-      "title": "Population Pharmacokinetic Modeling of Standard- and High-Dose Rifampicin for Tuberculosis Preventive Therapy in the 2R2 Randomized Controlled Trial.",
-      "reported_at": "2026-05-02T22:35:08.145210"
-    },
-    "41381220": {
-      "title": "Intracellular Ganciclovir Triphosphate Concentrations in Children With Congenital Cytomegalovirus Infection.",
-      "reported_at": "2026-05-02T22:35:08.145210"
-    },
-    "42055351": {
-      "title": "Comparative Efficacy and Safety of Antifungal Prophylactic Agents in Allogeneic Hematopoietic Stem Cell Transplantation: A Systematic Review and Network Meta-Analysis.",
-      "reported_at": "2026-05-02T22:35:08.145210"
-    },
-    "41698464": {
-      "title": "Evaluating the antibacterial activity of ceftazidime/avibactam and aztreonam combinations against multidrug-resistant Stenotrophomonas maltophilia complex isolates in a hollow fibre infection model.",
-      "reported_at": "2026-05-02T22:35:08.145210"
-    },
     "41525949": {
       "title": "Prevalence and clinical outcomes of respiratory syncytial virus, COVID-19, and influenza among older hospitalized adults: the EVERY prospective cohort study.",
       "reported_at": "2026-05-03T22:35:19.009544"
@@ -3119,6 +3099,10 @@
     "42925060": {
       "title": "Establishment and preliminary application of the <i>Mo</i> RPA-CRISPR/Cas12a rapid detection method.",
       "reported_at": "2026-10-29T01:32:33.466642"
+    },
+    "41875928": {
+      "title": "Targeted Peri-operative Prophylaxis in Patients Colonized With Carbapenem Resistant Enterobacterales Undergoing Liver Transplantation: A Multinational Cohort Study.",
+      "reported_at": "2026-10-30T01:30:33.425709"
     }
   }
 }
