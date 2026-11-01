@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "41307923": {
-      "title": "Reproducible Identification of Staphylococcus aureus Bacteremia Clinical Subphenotypes.",
-      "reported_at": "2026-05-04T22:52:52.826953"
-    },
-    "41253177": {
-      "title": "Using Generative Artificial Intelligence to Identify Central Line-associated Bloodstream Infections.",
-      "reported_at": "2026-05-04T22:52:52.826953"
-    },
-    "42063976": {
-      "title": "Impact of a Rapid Change in Beta-lactam Resistance Epidemiology on the Management of Patients With Bloodstream Infections.",
-      "reported_at": "2026-05-04T22:52:52.826953"
-    },
-    "42069225": {
-      "title": "Clinical and Economic Burden of Hospital-Wide Central Line-Associated Bloodstream Infections: A Propensity Score-Matched Case-Control Study.",
-      "reported_at": "2026-05-04T22:52:52.826953"
-    },
-    "42080550": {
-      "title": "Empirical glycopeptide exposure and acute kidney injury during cloxacillin therapy in <i>Staphylococcus aureus</i> bacteremia.",
-      "reported_at": "2026-05-04T22:52:52.826953"
-    },
     "40982552": {
       "title": "Cluster-Randomized Controlled Trial of Enhanced Carbapenem-Resistant Enterobacterales Prevention Program in General Medicine Wards, Siriraj Hospital.",
       "reported_at": "2026-05-05T22:51:25.205057"
@@ -3103,6 +3083,26 @@
     "42944973": {
       "title": "Paediatric Fentanyl Population Pharmacokinetics: A Scoping Review of Published Models.",
       "reported_at": "2026-10-31T01:24:50.768096"
+    },
+    "41715985": {
+      "title": "Presentation and Prognosis of Cryptococcosis Requiring Intensive Care Unit Admission in France: The CRYPTO-ICU Study.",
+      "reported_at": "2026-11-01T00:40:22.850459"
+    },
+    "42909852": {
+      "title": "Predictors and Patterns of Metastatic Candidozyma auris Infection, Spain, 2016-2024.",
+      "reported_at": "2026-11-01T00:40:22.850459"
+    },
+    "42546169": {
+      "title": "A Bayesian Re-analysis of the GALFLU Trial of High-Dose vs Standard-Dose Influenza Vaccine Against Hospitalization Outcomes.",
+      "reported_at": "2026-11-01T00:40:22.850459"
+    },
+    "42240564": {
+      "title": "Immunogenicity and Safety of Coadministration of AS01E-Adjuvanted Respiratory Syncytial Virus Prefusion F Protein Vaccine and a COVID-19 mRNA Vaccine in Adult s Aged ≥50 Years: A Phase 3, Randomized, Noninferiority Trial.",
+      "reported_at": "2026-11-01T00:40:22.850459"
+    },
+    "42224418": {
+      "title": "SARS-CoV-2 Vaccination and Attenuation of Breakthrough Infection Severity: A Systematic Global Review and Meta-analysis.",
+      "reported_at": "2026-11-01T00:40:22.850459"
     }
   }
 }
