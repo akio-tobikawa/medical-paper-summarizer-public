@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42084484": {
-      "title": "Antibiotic Duration after Debridement and Implant Retention for Early Postoperative Spinal Implant Infections: A Multicenter Cohort Study.",
-      "reported_at": "2026-05-06T22:43:52.775358"
-    },
-    "41519137": {
-      "title": "Safety and immunogenicity of PanChol, a single-dose live-attenuated oral cholera vaccine: results from a phase 1a, double-blind, randomised, placebo-controlled trial.",
-      "reported_at": "2026-05-06T22:43:52.775358"
-    },
-    "41418800": {
-      "title": "Efficacy of ProC6C-AlOH/Matrix-M against Plasmodium falciparum infection and mosquito transmission: a phase 2, randomised, controlled human malaria infection study.",
-      "reported_at": "2026-05-06T22:43:52.775358"
-    },
-    "41419216": {
-      "title": "Using the Comparing Oral versus Parenteral Antimicrobial Therapy (COPAT) Clinical Trial to Influence Institutional Practice Transformation Towards Earlier Transition to Oral Antibiotics.",
-      "reported_at": "2026-05-06T22:43:52.775358"
-    },
-    "41780701": {
-      "title": "Causality-informed models for multidrug-resistant organism prediction: Enabling effective ICU antibiotic stewardship.",
-      "reported_at": "2026-05-06T22:43:52.775358"
-    },
     "41661051": {
       "title": "Conservative Oxygen Targets in Mechanically Ventilated Patients (OXY-BREATHES): A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
       "reported_at": "2026-05-07T22:56:39.995509"
@@ -3103,6 +3083,26 @@
     "42349095": {
       "title": "Antimicrobial susceptibility patterns of Acinetobacter species at a reference laboratory and retrospective review of patients with positive blood cultures from a tertiary care center.",
       "reported_at": "2026-11-02T01:14:10.084353"
+    },
+    "42413960": {
+      "title": "Subgroup Analysis of Pooled Phase 3 Efficacy Data From Two Randomized Trials of Gepotidacin Versus Nitrofurantoin in Uncomplicated Urinary Tract Infections (EAGLE-2 and EAGLE-3) Including Participants With Uropathogens Not-Susceptible to Nitrofurantoin.",
+      "reported_at": "2026-11-03T03:18:09.502993"
+    },
+    "42526797": {
+      "title": "Mortality in infections caused by metallo-β-lactamase- versus serine carbapenemase-producing Enterobacterales: a systematic review and meta-analysis.",
+      "reported_at": "2026-11-03T03:18:09.502993"
+    },
+    "42950203": {
+      "title": "Gram-Negative Bacterial Resistance.",
+      "reported_at": "2026-11-03T03:18:09.502993"
+    },
+    "42937325": {
+      "title": "Characterization of clinical isolates of <i>Acinetobacter baumannii</i> and comparative proteomic profiling among strong and weak biofilm formers.",
+      "reported_at": "2026-11-03T03:18:09.502993"
+    },
+    "42962938": {
+      "title": "Dual therapy is associated with synchronous gonococcal susceptible-zone MIC dynamics: Norway, 2013-2025.",
+      "reported_at": "2026-11-03T03:18:09.502993"
     }
   }
 }
