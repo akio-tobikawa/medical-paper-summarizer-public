@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "41661051": {
-      "title": "Conservative Oxygen Targets in Mechanically Ventilated Patients (OXY-BREATHES): A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
-      "reported_at": "2026-05-07T22:56:39.995509"
-    },
-    "42090284": {
-      "title": "Early adequate linezolid concentrations and clinical outcomes in confirmed Gram-positive infections: the role of therapeutic drug monitoring.",
-      "reported_at": "2026-05-07T22:56:39.995509"
-    },
-    "42092974": {
-      "title": "Prevalence and representation of comorbidities and multimorbidity in randomised controlled trials in sepsis or septic shock: a systematic review.",
-      "reported_at": "2026-05-07T22:56:39.995509"
-    },
-    "42081049": {
-      "title": "Prognosis and aetiology of hospital-acquired pneumonia (HAP) and ventilator-associated pneumonia (VAP) in patients with active lung or lower head and neck cancer (PEPP-C): a retrospective, matched multicentre cohort study in Germany and Spain.",
-      "reported_at": "2026-05-07T22:56:39.995509"
-    },
-    "42084701": {
-      "title": "Ceftazidime-avibactam as monotherapy or in combination for targeted treatment of KPC-producing Klebsiella pneumoniae infections in ICUs: a comparative analysis through counterfactual framework and desirability of outcome ranking.",
-      "reported_at": "2026-05-07T22:56:39.995509"
-    },
     "41690639": {
       "title": "Population pharmacokinetics of cefazolin and metronidazole in patients undergoing elective colorectal surgery.",
       "reported_at": "2026-05-08T22:51:59.575205"
@@ -3103,6 +3083,26 @@
     "42962938": {
       "title": "Dual therapy is associated with synchronous gonococcal susceptible-zone MIC dynamics: Norway, 2013-2025.",
       "reported_at": "2026-11-03T03:18:09.502993"
+    },
+    "42947282": {
+      "title": "Comparison between days of antibiotic spectrum coverage and days of therapy as risk factors for <i>Clostridioides difficile</i> infection: a multicenter retrospective cohort study.",
+      "reported_at": "2026-11-04T01:52:47.944391"
+    },
+    "42217282": {
+      "title": "Species-level reporting of Coagulase-negative staphylococci with MALDI-TOF does not impact clinical outcomes.",
+      "reported_at": "2026-11-04T01:52:47.944391"
+    },
+    "42967404": {
+      "title": "Impact of early microbiology laboratory activation on rapid diagnosis and antimicrobial optimization in a sepsis alert pathway.",
+      "reported_at": "2026-11-04T01:52:47.944391"
+    },
+    "42957778": {
+      "title": "5-year outcomes of chemotherapy de-escalation in HER2-positive early breast cancer and exploratory circulating tumor DNA analyses from the randomized phase 2 PHERGain trial.",
+      "reported_at": "2026-11-04T01:52:47.944391"
+    },
+    "42214906": {
+      "title": "Survey on relationship between microbiological laboratories and ICUs in France.",
+      "reported_at": "2026-11-04T01:52:47.944391"
     }
   }
 }
