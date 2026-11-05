@@ -1,13 +1,5 @@
 {
   "reported_pmids": {
-    "41690639": {
-      "title": "Population pharmacokinetics of cefazolin and metronidazole in patients undergoing elective colorectal surgery.",
-      "reported_at": "2026-05-08T22:51:59.575205"
-    },
-    "42092465": {
-      "title": "AI-enabled digital wound monitoring after cardiac surgery: a randomised controlled feasibility, safety and acceptability trial.",
-      "reported_at": "2026-05-08T22:51:59.575205"
-    },
     "42104114": {
       "title": "The impact of gene polymorphisms on the response of methotrexate-based treatments.",
       "reported_at": "2026-05-09T22:37:12.669792"
@@ -3103,6 +3095,26 @@
     "42214906": {
       "title": "Survey on relationship between microbiological laboratories and ICUs in France.",
       "reported_at": "2026-11-04T01:52:47.944391"
+    },
+    "42958418": {
+      "title": "Chlorhexidine within a standardized oral-care bundle for the prevention of ventilator-associated pneumonia: a pragmatic cluster-randomized crossover trial in six medical intensive care units.",
+      "reported_at": "2026-11-05T02:00:33.260718"
+    },
+    "42955320": {
+      "title": "Ventilator-associated pneumonia after traumatic brain injury: a timing-sensitive ecological framework of neuroimmune-pulmonary vulnerability.",
+      "reported_at": "2026-11-05T02:00:33.260718"
+    },
+    "42981093": {
+      "title": "Overall Survival in Adults With Acute Myeloid Leukemia Initiating Quizartinib vs Midostaurin With Chemotherapy.",
+      "reported_at": "2026-11-05T02:00:33.260718"
+    },
+    "42535902": {
+      "title": "Inflammatory phenotypes in severe pneumonia: clinical evidence to mouse models for precision therapeutics.",
+      "reported_at": "2026-11-05T02:00:33.260718"
+    },
+    "42955323": {
+      "title": "Immunological signatures of sepsis in abdominal solid organ transplant recipients: A multilayer and multicentric prospective cohort study.",
+      "reported_at": "2026-11-05T02:00:33.260718"
     }
   }
 }
