@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42104114": {
-      "title": "The impact of gene polymorphisms on the response of methotrexate-based treatments.",
-      "reported_at": "2026-05-09T22:37:12.669792"
-    },
-    "42082885": {
-      "title": "Precision Dosing of Vancomycin: A Systematic Review of Population Pharmacokinetics Models and Comparative Evaluation of Software Tools.",
-      "reported_at": "2026-05-09T22:37:12.669792"
-    },
-    "42085673": {
-      "title": "Population pharmacokinetics and probability of target attainment of tigecycline in critically ill children.",
-      "reported_at": "2026-05-09T22:37:12.669792"
-    },
-    "41973073": {
-      "title": "Phase I studies assessing safety and pharmacokinetics of nacubactam administered alone or in combination with cefepime or aztreonam in Japanese healthy participants.",
-      "reported_at": "2026-05-09T22:37:12.669792"
-    },
-    "42090791": {
-      "title": "Daraxonrasib in Previously Treated Advanced <i>RAS</i>-Mutated Pancreatic Cancer.",
-      "reported_at": "2026-05-09T22:37:12.669792"
-    },
     "42097583": {
       "title": "Challenges in defining severe influenza with implications for measuring and communicating influenza vaccine effects.",
       "reported_at": "2026-05-10T22:41:06.052635"
@@ -3115,6 +3095,22 @@
     "42955323": {
       "title": "Immunological signatures of sepsis in abdominal solid organ transplant recipients: A multilayer and multicentric prospective cohort study.",
       "reported_at": "2026-11-05T02:00:33.260718"
+    },
+    "42963003": {
+      "title": "Negative-Pressure Wound Therapy for Surgical Site Infection Prevention After Elective Open Abdominal Surgery: A Risk-Stratified Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+      "reported_at": "2026-11-06T02:00:05.382320"
+    },
+    "42978221": {
+      "title": "Expanding NHSN CPT codes improves capture of pediatric cardiac procedures for surgical site infection surveillance.",
+      "reported_at": "2026-11-06T02:00:05.382320"
+    },
+    "42971361": {
+      "title": "Do Infection Cases Need to Be Last? Evidence Shows No Increased SSI Risk Following Orthopedic Infection Procedures.",
+      "reported_at": "2026-11-06T02:00:05.382320"
+    },
+    "42909851": {
+      "title": "Microbial Etiology of Postoperative Spinal Fusion Infections and Factors Associated with Gram-Negative Infections, United States, 2021-2022.",
+      "reported_at": "2026-11-06T02:00:05.382320"
     }
   }
 }
