@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42097583": {
-      "title": "Challenges in defining severe influenza with implications for measuring and communicating influenza vaccine effects.",
-      "reported_at": "2026-05-10T22:41:06.052635"
-    },
-    "42090792": {
-      "title": "Efficacy and Safety of an mRNA Seasonal Influenza Vaccine in Adults.",
-      "reported_at": "2026-05-10T22:41:06.052635"
-    },
-    "41891860": {
-      "title": "Use of baloxavir as adjunctive antiviral therapy to neuraminidase inhibitors in severely immunocompromised individuals infected with influenza.",
-      "reported_at": "2026-05-10T22:41:06.052635"
-    },
-    "41915767": {
-      "title": "Analysis of interactions between posaconazole/voriconazole and venetoclax.",
-      "reported_at": "2026-05-10T22:41:06.052635"
-    },
-    "41870065": {
-      "title": "Pharmacokinetic profiling of limnetrelvir in non-Japanese and Japanese populations: results of two phase 1 single- and multiple-dose studies.",
-      "reported_at": "2026-05-10T22:41:06.052635"
-    },
     "42097302": {
       "title": "Effectiveness and safety of daptomycin versus vancomycin in methicillin-resistant Staphylococci left-side infective endocarditis. Results from a nationwide prospective multicenter cohort.",
       "reported_at": "2026-05-11T22:49:28.400944"
@@ -3111,6 +3091,26 @@
     "42909851": {
       "title": "Microbial Etiology of Postoperative Spinal Fusion Infections and Factors Associated with Gram-Negative Infections, United States, 2021-2022.",
       "reported_at": "2026-11-06T02:00:05.382320"
+    },
+    "42176739": {
+      "title": "Defining the unbound target exposure of teicoplanin, Part 2: Dose individualization through population pharmacokinetic modelling.",
+      "reported_at": "2026-11-07T01:34:21.945921"
+    },
+    "42809435": {
+      "title": "A Phase I, randomized, double-blind, placebo-controlled, dose escalation study to evaluate the safety, tolerability, and pharmacokinetics of intravenous ertapenem and zidebactam in combination (WCK 6777) in healthy adult subjects.",
+      "reported_at": "2026-11-07T01:34:21.945921"
+    },
+    "42987888": {
+      "title": "Combination antiviral treatment for a patient with lymphocytic choriomeningitis virus meningoencephalitis associated with bispecific antibody teclistamab therapy for myeloma.",
+      "reported_at": "2026-11-07T01:34:21.945921"
+    },
+    "42176738": {
+      "title": "Defining the unbound target exposure of teicoplanin, Part 1: Insights from the hollow-fibre system.",
+      "reported_at": "2026-11-07T01:34:21.945921"
+    },
+    "42803753": {
+      "title": "Pharmacokinetics, safety, and tolerability of ceftibuten-ledaborbactam etzadroxil in participants with renal impairment.",
+      "reported_at": "2026-11-07T01:34:21.945921"
     }
   }
 }
