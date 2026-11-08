@@ -1,13 +1,5 @@
 {
   "reported_pmids": {
-    "42097302": {
-      "title": "Effectiveness and safety of daptomycin versus vancomycin in methicillin-resistant Staphylococci left-side infective endocarditis. Results from a nationwide prospective multicenter cohort.",
-      "reported_at": "2026-05-11T22:49:28.400944"
-    },
-    "42093058": {
-      "title": "Effects of an early restrictive versus liberal fluid strategy on long-term patient-centered outcomes in sepsis-induced hypotension (SHAMROC): an open-label, randomized controlled trial.",
-      "reported_at": "2026-05-11T22:49:28.400944"
-    },
     "42107728": {
       "title": "In Vivo Evolution of Tigecycline Resistance in ST540 Carbapenem-Resistant Acinetobacter baumannii: Mechanisms and Global Epidemiological Perspective.",
       "reported_at": "2026-05-12T22:55:25.979547"
@@ -3111,6 +3103,26 @@
     "42803753": {
       "title": "Pharmacokinetics, safety, and tolerability of ceftibuten-ledaborbactam etzadroxil in participants with renal impairment.",
       "reported_at": "2026-11-07T01:34:21.945921"
+    },
+    "42462376": {
+      "title": "Triazole resistance in clinical Aspergillus fumigatus isolates in India, a multicenter surveillance study.",
+      "reported_at": "2026-11-08T01:03:48.322006"
+    },
+    "42994614": {
+      "title": "Effect of immunomodulatory therapies on mortality in adults hospitalised with COVID-19 and non-COVID-19 community-acquired pneumonia: A systematic review and meta-analysis.",
+      "reported_at": "2026-11-08T01:03:48.322006"
+    },
+    "42685917": {
+      "title": "Epidemiology and outcomes of Candidozyma auris infections in Türkiye: a national surveillance study, 2023-2025.",
+      "reported_at": "2026-11-08T01:03:48.322006"
+    },
+    "42987210": {
+      "title": "Viral Aetiology of Lower Respiratory Tract Infections in Infants Attending Primary Care in Eastern Spain, 2023-2025.",
+      "reported_at": "2026-11-08T01:03:48.322006"
+    },
+    "42985210": {
+      "title": "Early Remdesivir for Patients Who Are Immunocompromised and Hospitalized With COVID-19.",
+      "reported_at": "2026-11-08T01:03:48.322006"
     }
   }
 }
