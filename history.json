@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42107728": {
-      "title": "In Vivo Evolution of Tigecycline Resistance in ST540 Carbapenem-Resistant Acinetobacter baumannii: Mechanisms and Global Epidemiological Perspective.",
-      "reported_at": "2026-05-12T22:55:25.979547"
-    },
-    "42113464": {
-      "title": "Integrating resistance biology, virulence networks, and precision therapeutics against multidrug-resistant Pseudomonas aeruginosa.",
-      "reported_at": "2026-05-12T22:55:25.979547"
-    },
-    "42105817": {
-      "title": "Multidrug-Resistant Enterobacterales in United States Hospitals: Frequency and Susceptibility to Newer β-Lactamase Inhibitor Combinations (2020-2024).",
-      "reported_at": "2026-05-12T22:55:25.979547"
-    },
-    "42090283": {
-      "title": "Artificial intelligence for analysing antibiotic use: an exploratory study in a tertiary care paediatric hospital in Italy.",
-      "reported_at": "2026-05-12T22:55:25.979547"
-    },
-    "42114654": {
-      "title": "Phylogenomics of a NDM-1-Producing Providencia stuartii Strain from Portugal Reveals Global Clinical and Environmental Reservoirs.",
-      "reported_at": "2026-05-12T22:55:25.979547"
-    },
     "42109158": {
       "title": "Epidemiology, resistance and virulence of neonatal Klebsiella pneumoniae isolates from a tertiary hospital in Tanzania.",
       "reported_at": "2026-05-13T23:01:27.846842"
@@ -3123,6 +3103,26 @@
     "42985210": {
       "title": "Early Remdesivir for Patients Who Are Immunocompromised and Hospitalized With COVID-19.",
       "reported_at": "2026-11-08T01:03:48.322006"
+    },
+    "42982287": {
+      "title": "Clinical failure in bloodstream infections extends beyond antimicrobial therapy: Factors associated with individual outcomes in a multicenter prospective cohort study.",
+      "reported_at": "2026-11-09T01:24:55.996862"
+    },
+    "42978218": {
+      "title": "The impact of CHG bathing on healthcare-associated bloodstream infections across a health system serving a predominantly rural population.",
+      "reported_at": "2026-11-09T01:24:55.996862"
+    },
+    "42974756": {
+      "title": "Are Higher-Order Carbapenems Effective Therapy for Patients with Ertapenem-Resistant Enterobacterales Invasive Infections?",
+      "reported_at": "2026-11-09T01:24:55.996862"
+    },
+    "42998556": {
+      "title": "Real-world clinical outcomes of dalbavancin for Gram-positive infections: A multicentre NHS cohort study.",
+      "reported_at": "2026-11-09T01:24:55.996862"
+    },
+    "42975771": {
+      "title": "Prosthetic valve endocarditis: valve type, microbiological patterns, and mortality-a nationwide multicenter cohort study.",
+      "reported_at": "2026-11-09T01:24:55.996862"
     }
   }
 }
