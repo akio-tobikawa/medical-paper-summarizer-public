@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42109158": {
-      "title": "Epidemiology, resistance and virulence of neonatal Klebsiella pneumoniae isolates from a tertiary hospital in Tanzania.",
-      "reported_at": "2026-05-13T23:01:27.846842"
-    },
-    "42119832": {
-      "title": "Integrated Prediction of Ceftriaxone Resistance in Major Salmonella Serotypes Using MALDI-TOF MS Data with Balanced Datasets and Machine Learning.",
-      "reported_at": "2026-05-13T23:01:27.846842"
-    },
-    "42111966": {
-      "title": "Implementation of the BIOFIRE Meningitis/Encephalitis Panel: A Mixed-Methods Implementation Study in a Nonmetropolitan Tertiary Hospital.",
-      "reported_at": "2026-05-13T23:01:27.846842"
-    },
-    "42089636": {
-      "title": "Optimized use of the FilmArray Meningitis/Encephalitis panel for early discontinuation of antibiotic therapy.",
-      "reported_at": "2026-05-13T23:01:27.846842"
-    },
-    "42103068": {
-      "title": "Emergence of Ceftriaxone-Resistant Neisseria gonorrhoeae penA-60-Carrying Strains, Thailand, 2025.",
-      "reported_at": "2026-05-13T23:01:27.846842"
-    },
     "42104520": {
       "title": "Epidemiology of the acute respiratory distress syndrome and the prognostic validity of SpO2:FiO2 under the expanded Global definition.",
       "reported_at": "2026-05-14T22:52:57.471606"
@@ -3123,6 +3103,26 @@
     "42975771": {
       "title": "Prosthetic valve endocarditis: valve type, microbiological patterns, and mortality-a nationwide multicenter cohort study.",
       "reported_at": "2026-11-09T01:24:55.996862"
+    },
+    "42982286": {
+      "title": "Mortality Risk Over Time in Patients with Carbapenem-Resistant Gram-Negative Bloodstream Infections: Implications for Recruitment and Timing of Primary Endpoints in Clinical Trials.",
+      "reported_at": "2026-11-10T03:59:47.030861"
+    },
+    "43002069": {
+      "title": "Mining and engineering novel staphylococcal lysostaphins as species-specific antibacterial agents.",
+      "reported_at": "2026-11-10T03:59:47.030861"
+    },
+    "43002076": {
+      "title": "Reducing bacterial resistance evolution through antimicrobial peptide modifications.",
+      "reported_at": "2026-11-10T03:59:47.030861"
+    },
+    "42985811": {
+      "title": "Antimicrobial-resistant Pseudomonas aeruginosa in the USA: implications of a national surveillance gap.",
+      "reported_at": "2026-11-10T03:59:47.030861"
+    },
+    "42987988": {
+      "title": "Diversity and host association of cfr-carrying plasmids of multidrug-resistant microorganisms from the Netherlands.",
+      "reported_at": "2026-11-10T03:59:47.030861"
     }
   }
 }
