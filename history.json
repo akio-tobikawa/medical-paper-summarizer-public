@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42104520": {
-      "title": "Epidemiology of the acute respiratory distress syndrome and the prognostic validity of SpO2:FiO2 under the expanded Global definition.",
-      "reported_at": "2026-05-14T22:52:57.471606"
-    },
-    "42098862": {
-      "title": "EBV reactivation and immunoparalysis indicate a harmful immune endotype in sepsis.",
-      "reported_at": "2026-05-14T22:52:57.471606"
-    },
-    "42120728": {
-      "title": "CRISPR-Cas9 CD33-deleted allogeneic hematopoietic cell transplantation with gemtuzumab ozogamicin maintenance in AML: a phase 1/2 trial.",
-      "reported_at": "2026-05-14T22:52:57.471606"
-    },
-    "42107609": {
-      "title": "Is Health Human Resource Strain Associated with the Prevalence of Healthcare-Associated Infections in England? Analysis of a national point prevalence survey.",
-      "reported_at": "2026-05-14T22:52:57.471606"
-    },
-    "42129026": {
-      "title": "Descriptive review: global spectrum of invasive group B streptococcal disease in nonpregnant adults: epidemiology, risk factors and clinical presentations.",
-      "reported_at": "2026-05-14T22:52:57.471606"
-    },
     "41984450": {
       "title": "Intrawound Tobramycin Plus Vancomycin to Prevent Surgical Site Infection in Tibial Fractures: The TOBRA Randomized Clinical Trial.",
       "reported_at": "2026-05-15T22:50:28.910026"
@@ -3123,6 +3103,10 @@
     "42987988": {
       "title": "Diversity and host association of cfr-carrying plasmids of multidrug-resistant microorganisms from the Netherlands.",
       "reported_at": "2026-11-10T03:59:47.030861"
+    },
+    "43002357": {
+      "title": "Impact of multiplex PCR respiratory panels on antimicrobial stewardship and clinical outcomes in hospitalized adults with pneumonia: a systematic review and meta-analysis.",
+      "reported_at": "2026-11-11T01:40:12.607893"
     }
   }
 }
