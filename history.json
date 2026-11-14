@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42116798": {
-      "title": "Changes in Epidemiology of Candidemia in the United States with a Focus on Candida auris.",
-      "reported_at": "2026-05-17T22:48:00.086939"
-    },
-    "41533748": {
-      "title": "Cytomegalovirus DNAemia in Hospitalized Adults With SARS-CoV-2 Infection Requiring Supplemental Oxygen: Virologic and Clinical Characteristics and Association With Outcomes.",
-      "reported_at": "2026-05-17T22:48:00.086939"
-    },
-    "42127390": {
-      "title": "Ensitrelvir for Covid-19 Postexposure Prophylaxis in Household Contacts.",
-      "reported_at": "2026-05-17T22:48:00.086939"
-    },
-    "41557260": {
-      "title": "Inflammasome Activation and Oxidative Stress in SARS-CoV-2 Infection and Symptomatic Rebound.",
-      "reported_at": "2026-05-17T22:48:00.086939"
-    },
-    "42141199": {
-      "title": "Favipiravir for Lassa fever: an open-label, randomized controlled phase 2 trial.",
-      "reported_at": "2026-05-17T22:48:00.086939"
-    },
     "42145063": {
       "title": "Scaling up improvement: the drive to reduce healthcare-associated infections in public Brazilian intensive care units across all patient ages.",
       "reported_at": "2026-05-18T22:55:28.158911"
@@ -3095,6 +3075,22 @@
     "43006822": {
       "title": "Increased Adoption of Robot-Assisted Appendectomy Without Improved Outcomes and Lower Modeled Value.",
       "reported_at": "2026-11-13T02:20:06.378739"
+    },
+    "43024185": {
+      "title": "Pharmacokinetics and Pharmacodynamics of Antibiotics in Prostatitis and Lower Urinary Tract Infections in Men: A Critical Scoping Review of the Published Concentration Data.",
+      "reported_at": "2026-11-14T01:59:06.050493"
+    },
+    "43018891": {
+      "title": "Multi-Objective Optimization of Population-Level Dosing Regimens.",
+      "reported_at": "2026-11-14T01:59:06.050493"
+    },
+    "43007007": {
+      "title": "Population pharmacokinetic analysis of lamivudine (3TC) in HIV-exposed neonates and pediatric participants living with HIV-1 from the IMPAACT 2019 and PETITE studies.",
+      "reported_at": "2026-11-14T01:59:06.050493"
+    },
+    "43002077": {
+      "title": "SCY-247, a second-generation triterpenoid antifungal, shows low risk for clinically meaningful interactions with CYP3A4 substrates: results from a phase 1 midazolam drug-drug interaction study.",
+      "reported_at": "2026-11-14T01:59:06.050493"
     }
   }
 }
