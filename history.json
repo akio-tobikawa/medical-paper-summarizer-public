@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42145063": {
-      "title": "Scaling up improvement: the drive to reduce healthcare-associated infections in public Brazilian intensive care units across all patient ages.",
-      "reported_at": "2026-05-18T22:55:28.158911"
-    },
-    "42124495": {
-      "title": "Impact of a patient-facing video on CHG bathing compliance in patients admitted to a bone marrow transplant unit.",
-      "reported_at": "2026-05-18T22:55:28.158911"
-    },
-    "42149364": {
-      "title": "Combination antibiotic therapy in Staphylococcus aureus endocarditis: evidence, controversies, and future directions.",
-      "reported_at": "2026-05-18T22:55:28.158911"
-    },
-    "42148800": {
-      "title": "Rapid detection of <i>Enterococcus faecalis</i> using RPA-CRISPR/Cas12a-assisted technology.",
-      "reported_at": "2026-05-18T22:55:28.158911"
-    },
-    "42142250": {
-      "title": "Infective endocarditis and post-treatment bacteremia caused by oral microorganisms: a retrospective cohort study.",
-      "reported_at": "2026-05-18T22:55:28.158911"
-    },
     "42138697": {
       "title": "Ceftazidime-avibactam for multidrug-resistant gram-negative infections: outcomes and timing of initiation across 22 U.S. medical centers.",
       "reported_at": "2026-05-19T22:59:27.385500"
@@ -3091,6 +3071,26 @@
     "43002077": {
       "title": "SCY-247, a second-generation triterpenoid antifungal, shows low risk for clinically meaningful interactions with CYP3A4 substrates: results from a phase 1 midazolam drug-drug interaction study.",
       "reported_at": "2026-11-14T01:59:06.050493"
+    },
+    "43025697": {
+      "title": "Optimising posaconazole dosing in paediatric patients: a population pharmacokinetic modelling and simulation study.",
+      "reported_at": "2026-11-15T01:32:34.818857"
+    },
+    "43007029": {
+      "title": "<i>In vitro</i> activity of manogepix against <i>Candida</i> spp. displaying elevated echinocandin MIC results.",
+      "reported_at": "2026-11-15T01:32:34.818857"
+    },
+    "43020390": {
+      "title": "Iron deficiency and the fungal protein Dde1 contribute to azole susceptibility in Saccharomyces cerevisiae and Candida glabrata.",
+      "reported_at": "2026-11-15T01:32:34.818857"
+    },
+    "43012620": {
+      "title": "The Effect of Guanfacine on Delirium in Surgical and Trauma ICU Patients: A Pilot Randomized Clinical Trial.",
+      "reported_at": "2026-11-15T01:32:34.818857"
+    },
+    "43012657": {
+      "title": "People With Influenza Requiring ICU Admission During the 2025-2026 Season, Marked by the Emergence of Influenza A(H3N2) Subclade K: A French Prospective Nationwide Cohort Study.",
+      "reported_at": "2026-11-15T01:32:34.818857"
     }
   }
 }
