@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42138697": {
-      "title": "Ceftazidime-avibactam for multidrug-resistant gram-negative infections: outcomes and timing of initiation across 22 U.S. medical centers.",
-      "reported_at": "2026-05-19T22:59:27.385500"
-    },
-    "41635259": {
-      "title": "Epidemiological and Molecular Surveillance of Multiresistant Citrobacter freundii Complex in a Tertiary Care Hospital: A Retrospective Cohort Study.",
-      "reported_at": "2026-05-19T22:59:27.385500"
-    },
-    "41542944": {
-      "title": "The Effect of a 5-Day Course of Azithromycin on Streptococcus Pneumoniae Carriage and Antimicrobial Resistance Among Kenyan Children Discharged From Hospital.",
-      "reported_at": "2026-05-19T22:59:27.385500"
-    },
-    "42142880": {
-      "title": "A randomized clinical trial to compare moxiFloxAcin veRsus aziTHromycin for the trEatment of MycoplaSma geniTalium: the FARTHEST Study.",
-      "reported_at": "2026-05-19T22:59:27.385500"
-    },
-    "42148585": {
-      "title": "<i>In vitro</i> antimicrobial resistance properties of rifapentine and rifampicin are indistinguishable.",
-      "reported_at": "2026-05-19T22:59:27.385500"
-    },
     "42158385": {
       "title": "Sustained Improvement in Antibiotic Prescribing Among Private Practice Dentists Following Antibiotic Stewardship Education and Dashboard Implementation.",
       "reported_at": "2026-05-20T23:08:03.433290"
@@ -3091,6 +3071,26 @@
     "43012657": {
       "title": "People With Influenza Requiring ICU Admission During the 2025-2026 Season, Marked by the Emergence of Influenza A(H3N2) Subclade K: A French Prospective Nationwide Cohort Study.",
       "reported_at": "2026-11-15T01:32:34.818857"
+    },
+    "43020276": {
+      "title": "Chlorhexidine Gluconate Significantly Reduces Central Line-Associated Bloodstream Infections:A Systematic Review and Meta-Analysis.",
+      "reported_at": "2026-11-16T01:35:08.345081"
+    },
+    "42813824": {
+      "title": "Diagnostic contribution of anaerobic bottles in pediatric blood cultures: experience at a tertiary children's hospital.",
+      "reported_at": "2026-11-16T01:35:08.345081"
+    },
+    "43012555": {
+      "title": "Analytical performance and workflow impact of the FASTinov QUICKprep kit for direct bacterial identification and antimicrobial susceptibility testing from positive blood cultures.",
+      "reported_at": "2026-11-16T01:35:08.345081"
+    },
+    "43018924": {
+      "title": "Risk factors and bacterial epidemiology of recurrent bloodstream infections-a population-based cohort study.",
+      "reported_at": "2026-11-16T01:35:08.345081"
+    },
+    "43018925": {
+      "title": "Pathogen-specific salvage of totally implantable ports and the role of antibiotic lock therapy.",
+      "reported_at": "2026-11-16T01:35:08.345081"
     }
   }
 }
