@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42158385": {
-      "title": "Sustained Improvement in Antibiotic Prescribing Among Private Practice Dentists Following Antibiotic Stewardship Education and Dashboard Implementation.",
-      "reported_at": "2026-05-20T23:08:03.433290"
-    },
-    "42149363": {
-      "title": "Clinical impact of EUCAST rapid antimicrobial susceptibility testing on empirical therapy in bloodstream infections: a real-world observational study.",
-      "reported_at": "2026-05-20T23:08:03.433290"
-    },
-    "42143944": {
-      "title": "Determinants of hospitalization and pneumonia in influenza during the post-pandemic era: Role of influenza A+B coinfection.",
-      "reported_at": "2026-05-20T23:08:03.433290"
-    },
-    "42134570": {
-      "title": "Impact of E-Prescribing Protocols on Antimicrobial Prescribing for Common Infections in Greece: An Interrupted Time Series Analysis.",
-      "reported_at": "2026-05-20T23:08:03.433290"
-    },
-    "42148584": {
-      "title": "Four-year antibiogram analysis of priority pathogens: guiding empirical therapy and monitoring resistance trends.",
-      "reported_at": "2026-05-20T23:08:03.433290"
-    },
     "42149358": {
       "title": "How infection affects the relationship between leukocyte count and mortality risk in intensive care.",
       "reported_at": "2026-05-21T22:59:36.420837"
@@ -3091,6 +3071,26 @@
     "43018925": {
       "title": "Pathogen-specific salvage of totally implantable ports and the role of antibiotic lock therapy.",
       "reported_at": "2026-11-16T01:35:08.345081"
+    },
+    "43013185": {
+      "title": "Outcomes of ESBL status among UTI admissions: a retrospective analysis of the Nationwide Inpatient Sample from 2016 to 2022.",
+      "reported_at": "2026-11-17T04:20:47.306831"
+    },
+    "42415364": {
+      "title": "Pharyngeal Gonorrhea in Ugandan Men With Urogenital Gonorrhea: Differences in Antimicrobial Resistance and Strain Types Between Anatomical Sites.",
+      "reported_at": "2026-11-17T04:20:47.306831"
+    },
+    "42566655": {
+      "title": "Hospitalization Costs Attributable to Antimicrobial Resistance in Spain: A Nationwide Cohort Study.",
+      "reported_at": "2026-11-17T04:20:47.306831"
+    },
+    "43012425": {
+      "title": "<i>In vitro</i> efficacy of synthetic antimicrobial peptide SET-M33 against poultry isolates with diverse antimicrobial resistance phenotypes.",
+      "reported_at": "2026-11-17T04:20:47.306831"
+    },
+    "43020275": {
+      "title": "Genomic Insights into Early Catheter-Associated UTIs in a Clinical Setting: High-Risk Clones, Hidden Diversity and Limited Catheter-Urine Genomic Divergence.",
+      "reported_at": "2026-11-17T04:20:47.306831"
     }
   }
 }
