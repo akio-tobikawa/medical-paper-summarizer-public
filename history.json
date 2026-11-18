@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42149358": {
-      "title": "How infection affects the relationship between leukocyte count and mortality risk in intensive care.",
-      "reported_at": "2026-05-21T22:59:36.420837"
-    },
-    "42149361": {
-      "title": "Clinical and epidemiological profile of patients with accidental tetanus in a referral hospital: a 13-year historical series.",
-      "reported_at": "2026-05-21T22:59:36.420837"
-    },
-    "42149703": {
-      "title": "Critical Illness Outcomes of Hospitalized Pregnant Women Following a Texas Abortion Ban.",
-      "reported_at": "2026-05-21T22:59:36.420837"
-    },
-    "41525800": {
-      "title": "Longitudinal Trends in Pediatric Non-Salmonella Gram-Negative Enterobacterales Infections at a Tertiary Care Center in West Africa, 2005-2023.",
-      "reported_at": "2026-05-21T22:59:36.420837"
-    },
-    "41662361": {
-      "title": "Decoding Hypervirulence in Carbapenem-Resistant Klebsiella pneumoniae: Genomic and Phenotypic Profiling Reveals Capsular Polysaccharide as a Key Driver of Pathogenicity.",
-      "reported_at": "2026-05-21T22:59:36.420837"
-    },
     "41831307": {
       "title": "Cephalosporins Versus Non-cephalosporin Antibiotics for Perioperative Prophylaxis in Primary Arthroplasty: A Systematic Review and Meta-Analysis.",
       "reported_at": "2026-05-22T22:52:45.031450"
@@ -3091,6 +3071,26 @@
     "43020275": {
       "title": "Genomic Insights into Early Catheter-Associated UTIs in a Clinical Setting: High-Risk Clones, Hidden Diversity and Limited Catheter-Urine Genomic Divergence.",
       "reported_at": "2026-11-17T04:20:47.306831"
+    },
+    "43033939": {
+      "title": "Preventive Carbapenem Stewardship and Clinical Outcomes in a Low-Resistance Setting: A Multicenter Quasi-Experimental Study.",
+      "reported_at": "2026-11-18T03:19:35.916953"
+    },
+    "43026563": {
+      "title": "Impact of antibiotic prophylaxis on the occurrence of early-onset ventilator-associated pneumonia in trauma patients (antiVAP): a propensity score-weighted, retrospective cohort study.",
+      "reported_at": "2026-11-18T03:19:35.916953"
+    },
+    "42109158": {
+      "title": "Epidemiology, Resistance, and Virulence of Neonatal Klebsiella pneumoniae Isolates From a Tertiary Hospital in Tanzania.",
+      "reported_at": "2026-11-18T03:19:35.916953"
+    },
+    "43020389": {
+      "title": "Conflicts of Interest and Broad-Spectrum First-Line Antibiotic Recommendations in Community-Acquired Pneumonia Guidelines: A Meta-epidemiological Study Using the WHO AWaRe Classification.",
+      "reported_at": "2026-11-18T03:19:35.916953"
+    },
+    "43013229": {
+      "title": "Rapid carbapenemase detection in enterobacterales using a lateral flow immunoassay: diagnostic performance and association with antimicrobial treatment decisions.",
+      "reported_at": "2026-11-18T03:19:35.916953"
     }
   }
 }
