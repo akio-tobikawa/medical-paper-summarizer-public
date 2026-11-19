@@ -1,17 +1,5 @@
 {
   "reported_pmids": {
-    "41831307": {
-      "title": "Cephalosporins Versus Non-cephalosporin Antibiotics for Perioperative Prophylaxis in Primary Arthroplasty: A Systematic Review and Meta-Analysis.",
-      "reported_at": "2026-05-22T22:52:45.031450"
-    },
-    "40085783": {
-      "title": "Impact of Vancomycin-Resistant Enterococci (VRE)-Active Perioperative Prophylaxis in Liver Transplant Patients Colonized by VRE.",
-      "reported_at": "2026-05-22T22:52:45.031450"
-    },
-    "42167605": {
-      "title": "Prophylactic Closed-Incision Negative Pressure Wound Therapy After Median Sternotomy: A Scoping Review of SSI prevention Bundle Reporting and Implication for Interpretation.",
-      "reported_at": "2026-05-22T22:52:45.031450"
-    },
     "41408415": {
       "title": "Pharmacokinetics of Dexamethasone in Tuberculous Meningitis.",
       "reported_at": "2026-05-23T22:47:09.744978"
@@ -3091,6 +3079,26 @@
     "43013229": {
       "title": "Rapid carbapenemase detection in enterobacterales using a lateral flow immunoassay: diagnostic performance and association with antimicrobial treatment decisions.",
       "reported_at": "2026-11-18T03:19:35.916953"
+    },
+    "43049838": {
+      "title": "AI-driven precision anti-infective therapy in critical care.",
+      "reported_at": "2026-11-19T02:58:10.235890"
+    },
+    "43018426": {
+      "title": "National Early Warning Score 2-Guided Sepsis Hour-1 Bundle Care for Adults With Suspected Sepsis in the Emergency Department: A Hybrid Type 1 Effectiveness-Implementation Stepped-Wedge Randomized Controlled Trial Pilot Study (NEWS-1 TRIPS).",
+      "reported_at": "2026-11-19T02:58:10.235890"
+    },
+    "43039139": {
+      "title": "Model-informed dosing strategies for inhaled aminoglycosides in nosocomial pneumonia.",
+      "reported_at": "2026-11-19T02:58:10.235890"
+    },
+    "43016314": {
+      "title": "Optimizing Sepsis Time Zero Definitions Through Associations between Antibiotic Timing and Mortality.",
+      "reported_at": "2026-11-19T02:58:10.235890"
+    },
+    "43039140": {
+      "title": "IDEntifying pAtients with suspicion of infection in the ED who have Low disease severity using midregional proadrenomedullin (MR-proADM) - A pragmatic pivotal randomised controlled trial.",
+      "reported_at": "2026-11-19T02:58:10.235890"
     }
   }
 }
