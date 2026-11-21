@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "41297557": {
-      "title": "Implementing Point-of-Care Testing in Infectious Diseases.",
-      "reported_at": "2026-05-24T22:53:19.423198"
-    },
-    "41560517": {
-      "title": "Safety and Immunogenicity of a Fourth Dose of Omicron BA.1-Adapted BNT162b2 COVID-19 Vaccines in Adults 18-55 Years Old.",
-      "reported_at": "2026-05-24T22:53:19.423198"
-    },
-    "42148571": {
-      "title": "Effect of inhaled interferon-β1a on SARS-CoV-2 diversity and evolution.",
-      "reported_at": "2026-05-24T22:53:19.423198"
-    },
-    "42148826": {
-      "title": "Nebulized Heparin in Adults With Acute Respiratory Failure: A Meta-Analysis of Randomized Trials.",
-      "reported_at": "2026-05-24T22:53:19.423198"
-    },
-    "41510565": {
-      "title": "Overlapping Clinical Presentation of Long COVID and Postacute COVID-19 Vaccination Syndrome: Phenotypes, Severity, and Biomarkers.",
-      "reported_at": "2026-05-24T22:53:19.423198"
-    },
     "42167607": {
       "title": "Machine Learning-Based Prediction of Central Line-Associated Bloodstream Infection in Children with Acute Leukemia.",
       "reported_at": "2026-05-25T22:55:05.624237"
@@ -3087,6 +3067,22 @@
     "43049095": {
       "title": "Preoperative Advanced Therapy Use and Anastomotic Complications After Elective Surgery for Crohn's Disease.",
       "reported_at": "2026-11-20T02:48:46.016462"
+    },
+    "43055268": {
+      "title": "Pharmacokinetic/Pharmacodynamic Analysis of Standard- and High-Dose Rifampicin to Predict Safety, Completion, and Tolerability of Tuberculosis Preventive Therapy in the 2R2 Randomized Controlled Trial.",
+      "reported_at": "2026-11-21T03:00:02.910144"
+    },
+    "41967484": {
+      "title": "A First-in-Human Phase 1 Clinical Study in Healthy Volunteers to Assess the Safety, Tolerability, and Pharmacokinetics of EDI048, a Novel Promising Agent to Treat Enteric Cryptosporidiosis.",
+      "reported_at": "2026-11-21T03:00:02.910144"
+    },
+    "43039141": {
+      "title": "Tailored Dosing Recommendations for Amikacin in Severely Ill Children: A Population Pharmacokinetic-Pharmacodynamic Evaluation using C<sub>max</sub>/MIC and AUC/MIC-based Indices.",
+      "reported_at": "2026-11-21T03:00:02.910144"
+    },
+    "43062021": {
+      "title": "Phage therapy reduces bacterial burden and inflammation in a neutropenic murine sepsis model caused by hyperinvasive carbapenem-resistant <i>Klebsiella pneumoniae</i>.",
+      "reported_at": "2026-11-21T03:00:02.910144"
     }
   }
 }
