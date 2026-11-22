@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42167607": {
-      "title": "Machine Learning-Based Prediction of Central Line-Associated Bloodstream Infection in Children with Acute Leukemia.",
-      "reported_at": "2026-05-25T22:55:05.624237"
-    },
-    "42173651": {
-      "title": "Performance of the LIAISON PLEX gram-positive blood culture assay for identifying bacterial pathogens and resistance genes in blood cultures.",
-      "reported_at": "2026-05-25T22:55:05.624237"
-    },
-    "42150112": {
-      "title": "4% Tetrasodium EDTA to Prevent Central Venous Access Device-Associated Complications: A Randomized Clinical Trial.",
-      "reported_at": "2026-05-25T22:55:05.624237"
-    },
-    "42182839": {
-      "title": "When Less Is More: Volume Considerations in the Treatment of <i>Enterococcus faecalis</i> Endocarditis.",
-      "reported_at": "2026-05-25T22:55:05.624237"
-    },
-    "42161336": {
-      "title": "Prevalence and outcomes of bacterial co-detections by blood culture among children and adults hospitalized with laboratory-confirmed influenza, Influenza Hospitalization Surveillance Network, 2022-2024.",
-      "reported_at": "2026-05-25T22:55:05.624237"
-    },
     "42185701": {
       "title": "Transcriptomic correlates of ceftazidime-avibactam collateral sensitivity in tigecycline-resistant NDM-producing enterobacter cloacae complex.",
       "reported_at": "2026-05-26T23:04:42.204550"
@@ -3083,6 +3063,26 @@
     "43062021": {
       "title": "Phage therapy reduces bacterial burden and inflammation in a neutropenic murine sepsis model caused by hyperinvasive carbapenem-resistant <i>Klebsiella pneumoniae</i>.",
       "reported_at": "2026-11-21T03:00:02.910144"
+    },
+    "43057280": {
+      "title": "Mortality and prognostic factors in invasive aspergillosis: a systematic review and individual patient data meta-analysis.",
+      "reported_at": "2026-11-22T01:55:19.121222"
+    },
+    "42644615": {
+      "title": "Reanalyzing a Randomized Controlled Trial of Invasive Aspergillosis Using a Desirability of Outcome Ranking Approach: Voriconazole Versus Amphotericin B Deoxycholate.",
+      "reported_at": "2026-11-22T01:55:19.121222"
+    },
+    "42429405": {
+      "title": "The Effect of Prevaccination Analgesics on Influenza Vaccine Immunogenicity and Effectiveness.",
+      "reported_at": "2026-11-22T01:55:19.121222"
+    },
+    "42583797": {
+      "title": "Development and Validation of a Machine Learning-Based Bedside Score (IPA-2T2C2DW) for Invasive Pulmonary Aspergillosis in Critically Ill Nonneutropenic Immunocompromised Hosts.",
+      "reported_at": "2026-11-22T01:55:19.121222"
+    },
+    "41160182": {
+      "title": "Real-World Effectiveness of Nirmatrelvir-Ritonavir in Preventing COVID-19-Associated Hospitalization: A Population-Based Cohort Study in the Province of Québec, Canada.",
+      "reported_at": "2026-11-22T01:55:19.121222"
     }
   }
 }
