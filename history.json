@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42185701": {
-      "title": "Transcriptomic correlates of ceftazidime-avibactam collateral sensitivity in tigecycline-resistant NDM-producing enterobacter cloacae complex.",
-      "reported_at": "2026-05-26T23:04:42.204550"
-    },
-    "41564894": {
-      "title": "Pregnant Women With Multidrug-Resistant/Rifampicin-Resistant Tuberculosis and the All-Oral 6-Month Regimen: Experiences From a Patient Series in South Africa.",
-      "reported_at": "2026-05-26T23:04:42.204550"
-    },
-    "41160716": {
-      "title": "Maternal, Pregnancy, and Infant Outcomes in Women Treated for Multidrug-Resistant/Rifampicin-Resistant Tuberculosis With Novel and Repurposed Drugs in KwaZulu-Natal, South Africa.",
-      "reported_at": "2026-05-26T23:04:42.204550"
-    },
-    "41288363": {
-      "title": "A 15-year Single-center Analysis of Late-onset Group B Streptococcus Infection Correlating Clinical Severity With Pathogen Virulence Determinants.",
-      "reported_at": "2026-05-26T23:04:42.204550"
-    },
-    "42184861": {
-      "title": "The costs and health outcomes associated with a personalised antibiotic combination testing service for carbapenem-resistant Pseudomonas aeruginosa: a cost-effectiveness analysis.",
-      "reported_at": "2026-05-26T23:04:42.204550"
-    },
     "42189672": {
       "title": "Early Discontinuation of Empiric Antibiotics in Pediatric Haploidentical Hematopoietic Cell Transplant Recipients with Febrile Neutropenia.",
       "reported_at": "2026-05-27T23:12:55.841083"
@@ -3083,6 +3063,22 @@
     "41160182": {
       "title": "Real-World Effectiveness of Nirmatrelvir-Ritonavir in Preventing COVID-19-Associated Hospitalization: A Population-Based Cohort Study in the Province of Québec, Canada.",
       "reported_at": "2026-11-22T01:55:19.121222"
+    },
+    "41474532": {
+      "title": "Reassessing the 2023 International Society for Cardiovascular Infectious Diseases Duke Clinical Criteria for Infective Endocarditis: Impact of Excluding Fever and Updating Diagnostic Definitions.",
+      "reported_at": "2026-11-23T02:10:27.317204"
+    },
+    "43067410": {
+      "title": "External validation of mortality risk scores in infective endocarditis: one size does not fit all.",
+      "reported_at": "2026-11-23T02:10:27.317204"
+    },
+    "42668139": {
+      "title": "Should Valve Leaflet Thickening Be Considered a Characteristic Lesion of Infective Endocarditis?",
+      "reported_at": "2026-11-23T02:10:27.317204"
+    },
+    "42378664": {
+      "title": "Type 3 Fimbrial Regulation Underpins Anti-MrkA Immunotherapeutic Efficacy in Experimental Klebsiella pneumoniae Infection.",
+      "reported_at": "2026-11-23T02:10:27.317204"
     }
   }
 }
