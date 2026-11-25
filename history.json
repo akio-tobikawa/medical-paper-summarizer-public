@@ -1,25 +1,5 @@
 {
   "reported_pmids": {
-    "42192043": {
-      "title": "Combined therapy with nebulized and intravenous colistin for the treatment of multidrug resistance pneumonia in burn patients: experience from a third referral burn care center in Mexico City.",
-      "reported_at": "2026-05-28T23:09:57.576950"
-    },
-    "42206912": {
-      "title": "Achieving therapeutic antibiotic levels during intermittent dosing of meropenem and piperacillin-tazobactam in critically ill children: the ATACC study.",
-      "reported_at": "2026-05-28T23:09:57.576950"
-    },
-    "42202947": {
-      "title": "Aztreonam-Avibactam for Carbapenem-Resistant Gram-Negative Infections: Mechanisms, Clinical Efficacy, the Challenge of Resistance and Susceptibility Testing.",
-      "reported_at": "2026-05-28T23:09:57.576950"
-    },
-    "42187539": {
-      "title": "Cardiovascular Subphenotypes in Sepsis.",
-      "reported_at": "2026-05-28T23:09:57.576950"
-    },
-    "42204737": {
-      "title": "Machine-learning algorithms identifies sTREM1 has a key biomarker for outcome prediction in critically ill.",
-      "reported_at": "2026-05-28T23:09:57.576950"
-    },
     "42212968": {
       "title": "Cefazolin surgical prophylaxis in obesity: a body composition-driven population pharmacokinetic approach.",
       "reported_at": "2026-05-29T23:08:00.303990"
@@ -3079,6 +3059,26 @@
     "43064124": {
       "title": "Comparison of clinical outcomes in carbapenemase-producing and non-carbapenemase-producing carbapenem-resistant Klebsiella pneumoniae bacteraemia.",
       "reported_at": "2026-11-24T05:46:14.489129"
+    },
+    "43072276": {
+      "title": "Early antibiotic spectrum narrowing and mortality in critically ill patients with culture-positive bloodstream infection: a 72-hour landmark analysis using MIMIC-IV.",
+      "reported_at": "2026-11-25T04:47:59.891028"
+    },
+    "43072277": {
+      "title": "Predicting expert-adjudicated appropriateness of postoperative antibiotic prescriptions from routine demographic, diagnostic and laboratory data: development and internal validation of machine learning models.",
+      "reported_at": "2026-11-25T04:47:59.891028"
+    },
+    "43068639": {
+      "title": "Diagnostic stewardship of multiplex molecular panels for bloodstream infections: A scoping review of clinical and microbiological outcomes.",
+      "reported_at": "2026-11-25T04:47:59.891028"
+    },
+    "43076855": {
+      "title": "Beyond the Chatbot: Agentic Artificial Intelligence and the Future of Infectious Disease Practice.",
+      "reported_at": "2026-11-25T04:47:59.891028"
+    },
+    "43064126": {
+      "title": "Trajectories of Antibiotic Consumption and Associations with Resistance Across Hospitals and Primary Care: A Population-Level Ecological Study in Shandong Province, China, 2012-2024.",
+      "reported_at": "2026-11-25T04:47:59.891028"
     }
   }
 }
