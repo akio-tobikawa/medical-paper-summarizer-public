@@ -1,13 +1,5 @@
 {
   "reported_pmids": {
-    "42212968": {
-      "title": "Cefazolin surgical prophylaxis in obesity: a body composition-driven population pharmacokinetic approach.",
-      "reported_at": "2026-05-29T23:08:00.303990"
-    },
-    "42206724": {
-      "title": "Association of Postoperative Fever and Antibiotic Use with Surgical Site Infection in Children with Complicated Appendicitis: A Retrospective Cohort Study.",
-      "reported_at": "2026-05-29T23:08:00.303990"
-    },
     "42189499": {
       "title": "Population Pharmacokinetics and Pharmacodynamics of Immunoglobulins: A Systematic Review.",
       "reported_at": "2026-05-30T22:54:16.481243"
@@ -3079,6 +3071,26 @@
     "43064126": {
       "title": "Trajectories of Antibiotic Consumption and Associations with Resistance Across Hospitals and Primary Care: A Population-Level Ecological Study in Shandong Province, China, 2012-2024.",
       "reported_at": "2026-11-25T04:47:59.891028"
+    },
+    "43058869": {
+      "title": "Discordant evidence on corticosteroids in sepsis: a meta-research study.",
+      "reported_at": "2026-11-26T03:57:17.789741"
+    },
+    "43076168": {
+      "title": "Prehospital Antibiotics for Patients With Suspected Sepsis: The PITSTOP-Antibiotics Factorial Randomized Clinical Trial.",
+      "reported_at": "2026-11-26T03:57:17.789741"
+    },
+    "43076208": {
+      "title": "Prehospital Fluid Resuscitation for Patients With Suspected Sepsis: The PITSTOP-Fluids Factorial Randomized Clinical Trial.",
+      "reported_at": "2026-11-26T03:57:17.789741"
+    },
+    "43068638": {
+      "title": "90-Minute point-of-care PRATHAMASENSE genosensor for gene-specific diagnosis of infection and antimicrobial resistance in critically ill patients: a multicentre diagnostic accuracy study.",
+      "reported_at": "2026-11-26T03:57:17.789741"
+    },
+    "43067406": {
+      "title": "Machine learning-based prediction of mortality at candidemia diagnosis: development and external validation across multicentre cohorts.",
+      "reported_at": "2026-11-26T03:57:17.789741"
     }
   }
 }
